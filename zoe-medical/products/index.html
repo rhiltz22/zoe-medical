@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!--
+  products/index.html — Products listing page
+  =============================================
+  PAGE STRUCTURE:
+    1. <head>     — metadata, fonts, CSS links
+    2. <nav>      — identical to every other page
+    3. <main>
+       - .page-header        title + subtitle
+       - .products-body      filter bar + 2x2 product grid
+       - .products-cta       closing "not sure?" band
+    4. <footer>   — identical to every other page
+
+  NOTE: This file lives inside /products/ so all paths use ../
+  to go up one level to the root, just like 740select.html.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — Zoe Medical Patient Monitoring Systems</title>
+  <meta name="description" content="Browse Zoe Medical's full range of US-made patient monitors for EMS, oral surgery, physician offices, and central monitoring. Factory-direct pricing.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages/products.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav class="nav">
+    <a href="../index.html" class="nav__logo">Zoe Medical</a>
+    <div class="nav__links">
+      <a href="index.html" class="active">Products</a>
+      <a href="../design-services.html">Design services</a>
+      <a href="../support.html">Support</a>
+      <a href="../about.html">About</a>
+    </div>
+    <a href="../contact.html" class="nav__cta">Request a quote</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="index.html">Products</a>
+    <a href="../design-services.html">Design services</a>
+    <a href="../support.html">Support</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html" class="nav__cta">Request a quote</a>
+  </div>
+
+
+  <main>
+
+    <!-- ----------------------------------------------------------
+         PAGE HEADER
+         Same blue band pattern as contact.html — consistent language
+         across interior pages makes the site feel designed, not thrown
+         together.
+         ---------------------------------------------------------- -->
+    <div class="page-header">
+      <div class="container">
+        <span class="eyebrow">Our product lines</span>
+        <h1 class="page-header__title">Monitoring solutions for every clinical setting</h1>
+        <p class="page-header__sub">
+          All Zoe Medical monitors are designed, assembled, and tested in
+          Topsfield, MA. Factory-direct pricing — no distributor markup.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         PRODUCTS BODY
+         Filter bar + product grid.
+
+         The filter bar lets visitors self-select by clinical setting.
+         JavaScript at the bottom handles show/hide — it's the most
+         complex JS on the site but still only ~20 lines.
+         ---------------------------------------------------------- -->
+    <section class="products-body">
+      <div class="container">
+
+        <!-- FILTER BAR
+             Each button has a data-filter attribute that matches
+             the data-category attribute on each product card.
+             JS reads these to know which cards to show/hide.
+        -->
+        <div class="filter-bar" role="group" aria-label="Filter products by category">
+          <button class="filter-btn is-active" data-filter="all">
+            All products
+          </button>
+          <button class="filter-btn" data-filter="ems">
+            <i class="ti ti-ambulance" aria-hidden="true"></i>
+            EMS / Vital signs
+          </button>
+          <button class="filter-btn" data-filter="surgery">
+            <i class="ti ti-tooth" aria-hidden="true"></i>
+            Oral surgery
+          </button>
+          <button class="filter-btn" data-filter="physician">
+            <i class="ti ti-stethoscope" aria-hidden="true"></i>
+            Physician office
+          </button>
+          <button class="filter-btn" data-filter="central">
+            <i class="ti ti-layout-dashboard" aria-hidden="true"></i>
+            Central monitoring
+          </button>
+        </div>
+
+
+        <!-- PRODUCT GRID
+             Each .product-card has a data-category attribute.
+             The filter JS toggles .is-hidden on cards that don't
+             match the active filter.
+        -->
+        <div class="products-grid" id="productsGrid">
+
+          <!-- Card 1: 740SELECT (EMS) -->
+          <article class="pcard card" data-category="ems">
+            <div class="pcard__image pcard__image--blue">
+              <i class="ti ti-ambulance" aria-hidden="true"></i>
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__category">EMS / Vital signs</span>
+                <span class="pcard__badge">
+                  <i class="ti ti-building-factory" aria-hidden="true"></i>
+                  US made
+                </span>
+              </div>
+              <h2 class="pcard__name">740SELECT Patient Monitor</h2>
+              <p class="pcard__model">Model: ZM-740S</p>
+              <p class="pcard__desc">
+                Rugged, portable vital signs monitor for pre-hospital, transport,
+                and field environments. Configurable parameter sets — spec exactly
+                what your service needs.
+              </p>
+              <div class="pcard__tags">
+                <span class="tag">SpO2</span>
+                <span class="tag">NIBP</span>
+                <span class="tag">ECG</span>
+                <span class="tag">ETCO2</span>
+                <span class="tag">Portable</span>
+              </div>
+              <div class="pcard__highlights">
+                <div class="pcard__highlight">
+                  <i class="ti ti-battery-charging" aria-hidden="true"></i>
+                  8-hour battery
+                </div>
+                <div class="pcard__highlight">
+                  <i class="ti ti-weight" aria-hidden="true"></i>
+                  2.8 lbs
+                </div>
+                <div class="pcard__highlight">
+                  <i class="ti ti-droplet-off" aria-hidden="true"></i>
+                  IP44 rated
+                </div>
+              </div>
+              <div class="pcard__actions">
+                <a href="740select.html" class="btn btn--primary pcard__cta">
+                  View specs <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                </a>
+                <a href="../contact.html?product=740select" class="pcard__quote">
+                  Request quote
+                </a>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- Card 2: Nightingale PPM3 (Oral Surgery) -->
+          <article class="pcard card" data-category="surgery">
+            <div class="pcard__image pcard__image--green">
+              <i class="ti ti-tooth" aria-hidden="true"></i>
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__category">Oral &amp; outpatient surgery</span>
+                <span class="pcard__badge">
+                  <i class="ti ti-building-factory" aria-hidden="true"></i>
+                  US made
+                </span>
+              </div>
+              <h2 class="pcard__name">Nightingale PPM3</h2>
+              <p class="pcard__model">Procedure &amp; Patient Monitor</p>
+              <p class="pcard__desc">
+                Compact, intuitive monitoring for oral surgery suites and outpatient
+                procedure rooms. Designed specifically for sedation monitoring
+                workflows.
+              </p>
+              <div class="pcard__tags">
+                <span class="tag">Capnography</span>
+                <span class="tag">SpO2</span>
+                <span class="tag">NIBP</span>
+                <span class="tag">ECG</span>
+              </div>
+              <div class="pcard__highlights">
+                <div class="pcard__highlight">
+                  <i class="ti ti-device-desktop" aria-hidden="true"></i>
+                  10" display
+                </div>
+                <div class="pcard__highlight">
+                  <i class="ti ti-alarm" aria-hidden="true"></i>
+                  Alarm management
+                </div>
+                <div class="pcard__highlight">
+                  <i class="ti ti-plug" aria-hidden="true"></i>
+                  AC powered
+                </div>
+              </div>
+              <div class="pcard__actions">
+                <a href="nightingale-ppm3.html" class="btn btn--primary pcard__cta">
+                  View specs <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                </a>
+                <a href="../contact.html?product=ppm3" class="pcard__quote">
+                  Request quote
+                </a>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- Card 3: Nightingale PHM (Physician Office) -->
+          <article class="pcard card" data-category="physician">
+            <div class="pcard__image pcard__image--amber">
+              <i class="ti ti-stethoscope" aria-hidden="true"></i>
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__category">Physician office</span>
+                <span class="pcard__badge">
+                  <i class="ti ti-building-factory" aria-hidden="true"></i>
+                  US made
+                </span>
+              </div>
+              <h2 class="pcard__name">Nightingale PHM</h2>
+              <p class="pcard__model">Physician &amp; Home Monitor</p>
+              <p class="pcard__desc">
+                Compact spot-check monitor with thumb ECG. Built for the fast pace
+                of a busy physician office — quick readings, clean interface, easy
+                to train staff on.
+              </p>
+              <div class="pcard__tags">
+                <span class="tag">Spot-check</span>
+                <span class="tag">Thumb ECG</span>
+                <span class="tag">SpO2</span>
+                <span class="tag">NIBP</span>
+              </div>
+              <div class="pcard__highlights">
+                <div class="pcard__highlight">
+                  <i class="ti ti-ruler" aria-hidden="true"></i>
+                  Compact form
+                </div>
+                <div class="pcard__highlight">
+                  <i class="ti ti-heart-rate-monitor" aria-hidden="true"></i>
+                  Thumb ECG
+                </div>
+                <div class="pcard__highlight">
+                  <i class="ti ti-transfer" aria-hidden="true"></i>
+                  EHR export
+                </div>
+              </div>
+              <div class="pcard__actions">
+                <a href="nightingale-phm.html" class="btn btn--primary pcard__cta">
+                  View specs <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                </a>
+                <a href="../contact.html?product=phm" class="pcard__quote">
+                  Request quote
+                </a>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- Card 4: Nightingale System (Central Monitoring) -->
+          <article class="pcard card" data-category="central">
+            <div class="pcard__image pcard__image--purple">
+              <i class="ti ti-layout-dashboard" aria-hidden="true"></i>
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__category">Central monitoring</span>
+                <span class="pcard__badge">
+                  <i class="ti ti-building-factory" aria-hidden="true"></i>
+                  US made
+                </span>
+              </div>
+              <h2 class="pcard__name">Nightingale System</h2>
+              <p class="pcard__model">Multi-Patient Central Station</p>
+              <p class="pcard__desc">
+                Alarm surveillance, trending, and reporting across multiple beds
+                from a nurse station. Integrates with the full Nightingale monitor
+                range for whole-floor oversight.
+              </p>
+              <div class="pcard__tags">
+                <span class="tag">Multi-bed</span>
+                <span class="tag">Alarming</span>
+                <span class="tag">Trending</span>
+                <span class="tag">Reporting</span>
+              </div>
+              <div class="pcard__highlights">
+                <div class="pcard__highlight">
+                  <i class="ti ti-devices" aria-hidden="true"></i>
+                  Up to 16 beds
+                </div>
+                <div class="pcard__highlight">
+                  <i class="ti ti-wifi" aria-hidden="true"></i>
+                  Wireless
+                </div>
+                <div class="pcard__highlight">
+                  <i class="ti ti-chart-line" aria-hidden="true"></i>
+                  Trend data
+                </div>
+              </div>
+              <div class="pcard__actions">
+                <a href="nightingale-central.html" class="btn btn--primary pcard__cta">
+                  View specs <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                </a>
+                <a href="../contact.html?product=central" class="pcard__quote">
+                  Request quote
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- end #productsGrid -->
+
+        <!-- Empty state — shown by JS when no cards match a filter -->
+        <div class="products-empty" id="productsEmpty" aria-live="polite">
+          <i class="ti ti-mood-empty" aria-hidden="true"></i>
+          <p>No products match that filter.</p>
+          <button class="btn btn--outline" onclick="resetFilter()">Show all products</button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         CLOSING CTA BAND
+         "Not sure which product?" — gives hesitant visitors a way
+         forward without having to make a decision alone.
+         ---------------------------------------------------------- -->
+    <section class="products-cta">
+      <div class="container">
+        <div class="products-cta__inner">
+          <div class="products-cta__text">
+            <h2 class="products-cta__title">Not sure which product is right for you?</h2>
+            <p class="products-cta__sub">
+              Tell us about your clinical setting and patient volume — we'll
+              recommend the right monitor and put together a quote.
+            </p>
+          </div>
+          <div class="products-cta__actions">
+            <a href="../contact.html" class="btn btn--white">Talk to our team</a>
+            <a href="tel:+19788871410" class="products-cta__phone">
+              <i class="ti ti-phone" aria-hidden="true"></i>
+              (978) 887-1410
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Zoe Medical, Inc.</div>
+        <p class="footer__tagline">Patient monitoring systems designed, manufactured, and supported in the USA since 1996. Factory-direct pricing for clinicians who need reliable, proven technology.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Products</div>
+        <a href="index.html">EMS / vital signs</a>
+        <a href="nightingale-ppm3.html">Oral surgery</a>
+        <a href="nightingale-phm.html">Physician office</a>
+        <a href="nightingale-central.html">Central monitoring</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="../about.html">About us</a>
+        <a href="../design-services.html">Design services</a>
+        <a href="../support.html">Support</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Support</div>
+        <a href="../support.html">Downloads</a>
+        <a href="../support.html#service">Service requests</a>
+        <a href="../support.html">FAQs</a>
+        <a href="../support.html#service">Warranty info</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 Zoe Medical, Incorporated. All rights reserved.</div>
+      <div class="footer__flag">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        Proudly made in Topsfield, MA
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — mobile nav + product filter
+       ============================================================ -->
+  <script>
+    // --- Mobile nav (same as every other page) ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('is-open');
+      const isOpen = mobileNav.classList.contains('is-open');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+      });
+    });
+
+    // --- Product filter ---
+    //
+    // HOW IT WORKS:
+    //   1. User clicks a filter button
+    //   2. We read its data-filter attribute ("ems", "surgery", etc.)
+    //   3. We loop through every product card
+    //   4. If the card's data-category doesn't match, we add .is-hidden
+    //   5. CSS transitions the card out (opacity + scale)
+    //   6. If no cards are visible, we show the empty state message
+    //
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards      = document.querySelectorAll('.pcard');
+    const emptyState = document.getElementById('productsEmpty');
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+
+        // Update active button style
+        filterBtns.forEach(function(b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+
+        const filter = btn.dataset.filter;   // "all", "ems", "surgery", etc.
+        let visibleCount = 0;
+
+        cards.forEach(function(card) {
+          // Show the card if filter is "all" OR category matches
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.classList.remove('is-hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+
+        // Show/hide the empty state
+        emptyState.classList.toggle('is-visible', visibleCount === 0);
+      });
+    });
+
+    // Called by the "Show all products" button in the empty state
+    function resetFilter() {
+      filterBtns.forEach(function(b) { b.classList.remove('is-active'); });
+      filterBtns[0].classList.add('is-active');   // "All products" button
+      cards.forEach(function(card) { card.classList.remove('is-hidden'); });
+      emptyState.classList.remove('is-visible');
+    }
+  </script>
+
+</body>
+</html>

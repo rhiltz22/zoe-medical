@@ -1,0 +1,544 @@
+/* ============================================================
+   PRODUCT.CSS — styles for all product detail pages
+   Loaded alongside style.css (global).
+   Every product page (740select, ppm3, phm, central) uses
+   this same CSS file — only the HTML content changes.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   BREADCRUMB
+   The "Home > Products > 740SELECT" trail at the top.
+   An <ol> styled with flexbox to read horizontally.
+   ------------------------------------------------------------ */
+.breadcrumb {
+  background: var(--color-bg-light);
+  border-bottom: 1px solid var(--color-border);
+  padding: 12px 0;
+}
+
+.breadcrumb__list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.breadcrumb__list li {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Links inside the breadcrumb are clickable */
+.breadcrumb__list a {
+  color: var(--color-primary);
+  transition: opacity 0.15s;
+}
+
+.breadcrumb__list a:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* The last item (current page) is not a link — slightly darker */
+.breadcrumb__list [aria-current="page"] {
+  color: var(--color-text-body);
+  font-weight: 500;
+}
+
+
+/* ------------------------------------------------------------
+   PRODUCT HERO
+   Two-column layout: image stack left, info + CTA right.
+   ------------------------------------------------------------ */
+.product-hero {
+  background: var(--color-bg-blue);
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-border-blue);
+}
+
+.product-hero__inner {
+  display: grid;
+  /*
+    1fr = takes up 1 fraction of available space.
+    This gives the image column slightly less space than the info column.
+  */
+  grid-template-columns: 2fr 3fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+
+/* --- Image column --- */
+.product-hero__images {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Main product image — placeholder until real photos exist */
+.product-hero__main-img {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border-blue);
+  border-radius: var(--radius-md);
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.product-hero__main-img i {
+  font-size: 64px;
+  color: var(--color-primary-mid);
+}
+
+.product-hero__main-img span {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Thumbnail strip below main image */
+.product-hero__thumbs {
+  display: flex;
+  gap: 8px;
+}
+
+.product-hero__thumb {
+  width: 60px;
+  height: 50px;
+  background: var(--color-bg-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.product-hero__thumb i {
+  font-size: 20px;
+  color: var(--color-text-muted);
+}
+
+.product-hero__thumb:hover,
+.product-hero__thumb.is-active {
+  border-color: var(--color-primary);
+}
+
+.product-hero__thumb.is-active i {
+  color: var(--color-primary);
+}
+
+
+/* --- Info column --- */
+.product-hero__category {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.product-hero__name {
+  font-size: var(--text-2xl);
+  color: var(--color-text-heading);
+  margin-bottom: 4px;
+}
+
+.product-hero__model {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.product-hero__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-body);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  max-width: 480px;
+}
+
+.product-hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: var(--space-sm);
+}
+
+/* US-made badge */
+.product-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #EAF3DE;
+  color: #27500A;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-md);
+}
+
+.product-hero__badge i {
+  font-size: 14px;
+}
+
+
+/* --- CTA box --- */
+.product-cta-box {
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-cta-box__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: #fff;
+}
+
+.product-cta-box__sub {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.70);
+}
+
+.product-cta-box__btn {
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+}
+
+.product-cta-box__phone {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.70);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.product-cta-box__phone a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.product-cta-box__phone i {
+  font-size: 14px;
+}
+
+
+/* ------------------------------------------------------------
+   PRODUCT BODY
+   Two-column: main content (wider) + sidebar (narrower).
+   position: sticky on the sidebar keeps it visible while
+   the user scrolls through the long specs/features section.
+   ------------------------------------------------------------ */
+.product-body {
+  padding: var(--space-lg) 0 var(--space-xl);
+  background: var(--color-bg-light);
+}
+
+.product-body__inner {
+  display: grid;
+  grid-template-columns: 1fr 300px;   /* main content | fixed-width sidebar */
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.product-body__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Sticky sidebar — stays visible as user scrolls specs */
+.product-body__sidebar {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-md));  /* below the sticky nav (offsets the sticky position by the height of the nav so they don't overlap.) */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+
+/* ------------------------------------------------------------
+   SPEC BLOCK (the specs table)
+   ------------------------------------------------------------ */
+.spec-block {
+  /* .card gives us background, border, border-radius */
+}
+
+.spec-block__header {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.spec-block__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+/*
+  Each .spec-row is a two-column grid: key | value
+  display: grid with two equal columns is simpler than a <table>
+  and much easier to make responsive.
+*/
+.spec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  padding: 10px var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+
+.spec-row--last {
+  border-bottom: none;
+}
+
+.spec-row__key {
+  color: var(--color-text-muted);
+}
+
+.spec-row__val {
+  color: var(--color-text-body);
+  font-weight: 500;
+}
+
+
+/* ------------------------------------------------------------
+   FEATURES BLOCK
+   ------------------------------------------------------------ */
+.features-block {
+  /* .card from style.css */
+}
+
+.features-block__header {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.feature-item {
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  align-items: flex-start;
+}
+
+.feature-item--last {
+  border-bottom: none;
+}
+
+.feature-item__icon {
+  width: 36px;
+  height: 36px;
+  background: var(--color-bg-blue);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;            /* icon never shrinks even if text is long */
+  margin-top: 2px;
+}
+
+.feature-item__icon i {
+  font-size: 18px;
+  color: var(--color-primary);
+}
+
+.feature-item__title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin-bottom: 4px;
+}
+
+.feature-item__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+
+/* ------------------------------------------------------------
+   DOWNLOADS BLOCK (sidebar)
+   ------------------------------------------------------------ */
+.downloads-block {
+  /* .card from style.css */
+}
+
+.downloads-block__header {
+  padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Each download is an <a> tag — full row is clickable */
+.download-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.download-item:hover {
+  background: var(--color-bg-light);
+}
+
+.download-item--last {
+  border-bottom: none;
+}
+
+.download-item__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-sm);
+  color: var(--color-text-body);
+}
+
+.download-item__name i {
+  font-size: 16px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.download-item__action {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+
+/* ------------------------------------------------------------
+   RELATED PRODUCTS BLOCK (sidebar)
+   ------------------------------------------------------------ */
+.related-block {
+  /* .card from style.css */
+}
+
+/* Each related product is a full-row <a> link */
+.related-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.related-item:hover {
+  background: var(--color-bg-light);
+}
+
+.related-item--last {
+  border-bottom: none;
+}
+
+/* Small colored icon square — matches product card colors */
+.related-item__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.related-item__icon i {
+  font-size: 20px;
+}
+
+.related-item__icon--green   { background: #E1F5EE; }
+.related-item__icon--green i { color: #0F6E56; }
+
+.related-item__icon--amber   { background: #FAEEDA; }
+.related-item__icon--amber i { color: #BA7517; }
+
+.related-item__icon--purple   { background: #EEEDFE; }
+.related-item__icon--purple i { color: #534AB7; }
+
+.related-item__name {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-heading);
+  margin-bottom: 2px;
+}
+
+.related-item__cat {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Chevron pushed to far right with margin-left: auto */
+.related-item__arrow {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.related-item:hover .related-item__arrow {
+  transform: translateX(3px);   /* arrow slides right on hover */
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSIVE — Product pages on mobile
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+
+  /* Hero stacks image above info */
+  .product-hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .product-hero__main-img {
+    height: 180px;
+  }
+
+  /* Body stacks main content above sidebar */
+  .product-body__inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* Sidebar is no longer sticky on mobile — it just flows naturally */
+  .product-body__sidebar {
+    position: static;
+  }
+
+  /* Spec rows go single column on very small screens */
+  .spec-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .spec-row__key {
+    font-size: var(--text-xs);
+  }
+}

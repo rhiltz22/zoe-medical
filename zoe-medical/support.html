@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<!--
+  support.html — Support page
+  ============================
+  The original support page is a library of product videos
+  (setup guides, settings walkthroughs). This redesign keeps
+  that as the core, organized by product, with filtering.
+
+  PAGE STRUCTURE:
+    1. <head>     — metadata, fonts, CSS links
+    2. <nav>      — identical to every other page
+    3. <main>
+       - .page-header        title + subtitle
+       - .support-quicklinks  3 cards: videos / service / contact
+       - .support-videos      filterable grid of video tutorials
+       - .support-service     service request + downloads band
+    4. <footer>   — identical to every other page
+
+  VIDEOS: each .video-card has a data-product attribute used by
+  the filter JS. The thumbnail is a placeholder — replace the
+  inner div with a YouTube/Vimeo embed or a clickable thumbnail
+  that opens the video.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Zoe Medical Product Videos &amp; Resources</title>
+  <meta name="description" content="Setup guides, settings walkthroughs, and how-to videos for Zoe Medical patient monitors. Plus service requests, manuals, and direct US-based support.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/support.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Zoe Medical</a>
+    <div class="nav__links">
+      <a href="products/index.html">Products</a>
+      <a href="design-services.html">Design services</a>
+      <a href="support.html" class="active">Support</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="products/index.html">Products</a>
+    <a href="design-services.html">Design services</a>
+    <a href="support.html">Support</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+  </div>
+
+
+  <main>
+
+    <!-- ----------------------------------------------------------
+         PAGE HEADER
+         ---------------------------------------------------------- -->
+    <div class="page-header">
+      <div class="container">
+        <span class="eyebrow">Support</span>
+        <h1 class="page-header__title">Help with your Zoe Medical monitor</h1>
+        <p class="page-header__sub">
+          Setup guides, settings walkthroughs, and how-to videos for every product
+          — plus service requests and direct access to our US-based support team.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         QUICK LINKS
+         Three jump-to cards for the three main support intents.
+         Anchor links (#videos, #service) scroll to sections below.
+         ---------------------------------------------------------- -->
+    <section class="support-quicklinks">
+      <div class="container">
+        <div class="quicklinks-grid">
+
+          <a href="#videos" class="quicklink card">
+            <div class="quicklink__icon quicklink__icon--blue">
+              <i class="ti ti-player-play" aria-hidden="true"></i>
+            </div>
+            <div class="quicklink__text">
+              <h2 class="quicklink__title">Video tutorials</h2>
+              <p class="quicklink__desc">Setup, configuration, and settings walkthroughs for each product.</p>
+            </div>
+            <i class="ti ti-chevron-right quicklink__arrow" aria-hidden="true"></i>
+          </a>
+
+          <a href="#service" class="quicklink card">
+            <div class="quicklink__icon quicklink__icon--green">
+              <i class="ti ti-tool" aria-hidden="true"></i>
+            </div>
+            <div class="quicklink__text">
+              <h2 class="quicklink__title">Service &amp; repairs</h2>
+              <p class="quicklink__desc">Submit a service request or download manuals and documentation.</p>
+            </div>
+            <i class="ti ti-chevron-right quicklink__arrow" aria-hidden="true"></i>
+          </a>
+
+          <a href="contact.html?reason=support" class="quicklink card">
+            <div class="quicklink__icon quicklink__icon--amber">
+              <i class="ti ti-headset" aria-hidden="true"></i>
+            </div>
+            <div class="quicklink__text">
+              <h2 class="quicklink__title">Talk to a person</h2>
+              <p class="quicklink__desc">Reach our Topsfield support team directly by phone or email.</p>
+            </div>
+            <i class="ti ti-chevron-right quicklink__arrow" aria-hidden="true"></i>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         VIDEO LIBRARY
+         Filterable grid of tutorial videos, organized by product.
+         Same filter pattern as the products page.
+         ---------------------------------------------------------- -->
+    <section class="section section--light" id="videos">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="eyebrow">Video tutorials</span>
+          <h2 class="section-title">Find a how-to for your monitor</h2>
+          <p class="section-sub">Filter by product to see setup guides, settings walkthroughs, and feature overviews.</p>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filter-bar" role="group" aria-label="Filter videos by product">
+          <button class="filter-btn is-active" data-filter="all">All videos</button>
+          <button class="filter-btn" data-filter="740select">
+            <i class="ti ti-ambulance" aria-hidden="true"></i> 740SELECT
+          </button>
+          <button class="filter-btn" data-filter="ppm3">
+            <i class="ti ti-tooth" aria-hidden="true"></i> Nightingale PPM3
+          </button>
+          <button class="filter-btn" data-filter="phm">
+            <i class="ti ti-stethoscope" aria-hidden="true"></i> Nightingale PHM
+          </button>
+          <button class="filter-btn" data-filter="central">
+            <i class="ti ti-layout-dashboard" aria-hidden="true"></i> Central
+          </button>
+        </div>
+
+        <!-- Video grid -->
+        <div class="video-grid" id="videoGrid">
+
+          <!--
+            REPLACING PLACEHOLDERS WITH REAL VIDEOS:
+            Swap each .video-card__thumb div for a clickable thumbnail
+            or an embed. For a YouTube embed, use:
+              <div class="video-card__thumb">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+                        title="..." frameborder="0" allowfullscreen></iframe>
+              </div>
+            The data-product attribute drives the filter.
+          -->
+
+          <!-- 740SELECT videos -->
+          <article class="video-card card" data-product="740select">
+            <div class="video-card__thumb video-card__thumb--blue">
+              <iframe src="https://player.vimeo.com/video/691999720?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Zoe Medical 740 SELECT - Acute care"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">740SELECT</span>
+              <h3 class="video-card__title">740SELECT acute care overview</h3>
+              <p class="video-card__desc">An overview of the 740SELECT configured for acute care environments.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="740select">
+            <div class="video-card__thumb video-card__thumb--blue">
+              <iframe src="https://player.vimeo.com/video/692000620?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Zoe Medical 740 SELECT  - EMS"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">740SELECT</span>
+              <h3 class="video-card__title">740SELECT EMS overview</h3>
+              <p class="video-card__desc">An overview of the 740SELECT configured for EMS and pre-hospital use.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="740select">
+            <div class="video-card__thumb video-card__thumb--blue">
+              <iframe src="https://player.vimeo.com/video/692000981?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Zoe Medical 740 SELECT - module_1 (Basic Setup and Functionality)"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">740SELECT</span>
+              <h3 class="video-card__title">Basic setup and functionality</h3>
+              <p class="video-card__desc">Powering on, navigating the interface, and getting acquainted with the 740SELECT.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="740select">
+            <div class="video-card__thumb video-card__thumb--blue">
+              <iframe src="https://player.vimeo.com/video/692001338?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Zoe Medical 740 SELECT - module_2 (Setup for Patient, Patient Type, Monitor, and Clinician Display)"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">740SELECT</span>
+              <h3 class="video-card__title">Patient setup and display configuration</h3>
+              <p class="video-card__desc">Configuring patient type, monitor settings, and the clinician display on the 740SELECT.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="740select">
+            <div class="video-card__thumb video-card__thumb--blue">
+              <iframe src="https://player.vimeo.com/video/692001508?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Zoe Medical 740 SELECT -module_3 (Setup and Performing an NIBP Measurementl)"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">740SELECT</span>
+              <h3 class="video-card__title">Setup and performing an NIBP measurement</h3>
+              <p class="video-card__desc">How to set up and take a non-invasive blood pressure reading with the 740SELECT.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="740select">
+            <div class="video-card__thumb video-card__thumb--blue">
+              <iframe src="https://player.vimeo.com/video/692001852?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Zoe Medical 740 SELECT -module_4 (Setup and Performing SpO2 and SpCO2)"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">740SELECT</span>
+              <h3 class="video-card__title">Setup and performing SpO2 and SpCO2</h3>
+              <p class="video-card__desc">Attaching the sensor and capturing pulse oximetry and carboxyhemoglobin readings on the 740SELECT.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="740select">
+            <div class="video-card__thumb video-card__thumb--blue">
+              <iframe src="https://player.vimeo.com/video/692001934?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Zoe Medical 740 SELECT -module_5 (Temperature Options and Taking an Exergen Temporal Artery Temperature)"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">740SELECT</span>
+              <h3 class="video-card__title">Temperature options and Exergen temporal artery</h3>
+              <p class="video-card__desc">Temperature measurement options including Exergen temporal artery thermometry on the 740SELECT.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="740select">
+            <div class="video-card__thumb video-card__thumb--blue">
+              <iframe src="https://player.vimeo.com/video/692001988?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Zoe Medical 740 SELECT -module_6 (Setup, Electrode Placement, and Performing an ECG)"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">740SELECT</span>
+              <h3 class="video-card__title">Electrode placement and performing an ECG</h3>
+              <p class="video-card__desc">Lead placement setup and step-by-step ECG acquisition on the 740SELECT.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="740select">
+            <div class="video-card__thumb video-card__thumb--blue">
+              <iframe src="https://player.vimeo.com/video/692002059?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Zoe Medical 740 SELECT -module_7 (EtCO2 Options and Performing EtCO2)"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">740SELECT</span>
+              <h3 class="video-card__title">EtCO2 options and performing capnography</h3>
+              <p class="video-card__desc">Configuring EtCO2 options and capturing end-tidal CO2 readings with the 740SELECT.</p>
+            </div>
+          </article>
+
+          <!-- PPM3 videos -->
+          <article class="video-card card" data-product="ppm3">
+            <div class="video-card__thumb video-card__thumb--green">
+              <iframe src="https://player.vimeo.com/video/208136761?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="PPM3 user interface"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">Nightingale PPM3</span>
+              <h3 class="video-card__title">PPM3 user interface</h3>
+              <p class="video-card__desc">A walkthrough of the Nightingale PPM3 display layout, menus, and on-screen navigation.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="ppm3">
+            <div class="video-card__thumb video-card__thumb--green">
+              <iframe src="https://player.vimeo.com/video/208136528?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Connecting accessories to the PPM3"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">Nightingale PPM3</span>
+              <h3 class="video-card__title">Connecting accessories to the PPM3</h3>
+              <p class="video-card__desc">How to attach SpO2, ETCO2, NIBP, and other accessories to the Nightingale PPM3.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="ppm3">
+            <div class="video-card__thumb video-card__thumb--green">
+              <iframe src="https://player.vimeo.com/video/208221877?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="A typical procedure workflow"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">Nightingale PPM3</span>
+              <h3 class="video-card__title">A typical procedure workflow</h3>
+              <p class="video-card__desc">Step-by-step guide to setting up and monitoring a patient through a complete procedure on the PPM3.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="ppm3">
+            <div class="video-card__thumb video-card__thumb--green">
+              <iframe src="https://player.vimeo.com/video/208185196?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Save default settings XAVCS 374MB"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">Nightingale PPM3</span>
+              <h3 class="video-card__title">Save default settings</h3>
+              <p class="video-card__desc">How to save your preferred configuration as the power-on default on the Nightingale PPM3.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="ppm3">
+            <div class="video-card__thumb video-card__thumb--green">
+              <iframe src="https://player.vimeo.com/video/210777613?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Date and time on the PPM3"></iframe>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">Nightingale PPM3</span>
+              <h3 class="video-card__title">Date and time on the PPM3</h3>
+              <p class="video-card__desc">Setting and adjusting the date and time on the Nightingale PPM3.</p>
+            </div>
+          </article>
+
+          <!-- PHM videos -->
+          <article class="video-card card" data-product="phm">
+            <div class="video-card__thumb video-card__thumb--amber">
+              <i class="ti ti-player-play-filled" aria-hidden="true"></i>
+              <span class="video-card__duration">3:10</span>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">Nightingale PHM</span>
+              <h3 class="video-card__title">Taking a spot-check reading</h3>
+              <p class="video-card__desc">Quick-start guide to capturing vitals with the PHM in a physician office.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="phm">
+            <div class="video-card__thumb video-card__thumb--amber">
+              <i class="ti ti-player-play-filled" aria-hidden="true"></i>
+              <span class="video-card__duration">4:35</span>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">Nightingale PHM</span>
+              <h3 class="video-card__title">Using the thumb ECG feature</h3>
+              <p class="video-card__desc">How to capture and review a thumb ECG reading on the PHM.</p>
+            </div>
+          </article>
+
+          <!-- Central videos -->
+          <article class="video-card card" data-product="central">
+            <div class="video-card__thumb video-card__thumb--purple">
+              <i class="ti ti-player-play-filled" aria-hidden="true"></i>
+              <span class="video-card__duration">7:15</span>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">Central System</span>
+              <h3 class="video-card__title">Setting up the central station</h3>
+              <p class="video-card__desc">Connecting monitors and configuring multi-bed surveillance at the nurse station.</p>
+            </div>
+          </article>
+
+          <article class="video-card card" data-product="central">
+            <div class="video-card__thumb video-card__thumb--purple">
+              <i class="ti ti-player-play-filled" aria-hidden="true"></i>
+              <span class="video-card__duration">5:55</span>
+            </div>
+            <div class="video-card__body">
+              <span class="video-card__product">Central System</span>
+              <h3 class="video-card__title">Reviewing trend data &amp; reports</h3>
+              <p class="video-card__desc">Accessing patient trends and generating reports from the central system.</p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Empty state -->
+        <div class="videos-empty" id="videosEmpty" aria-live="polite">
+          <i class="ti ti-video-off" aria-hidden="true"></i>
+          <p>No videos for that product yet.</p>
+          <button class="btn btn--outline" onclick="resetVideoFilter()">Show all videos</button>
+        </div>
+
+        <p class="support-videos__note">
+          <i class="ti ti-info-circle" aria-hidden="true"></i>
+          Can't find what you need? <a href="contact.html?reason=support">Ask our support team</a> — we're happy to walk you through anything.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         SERVICE & DOWNLOADS
+         Two columns: service request path + downloads list.
+         ---------------------------------------------------------- -->
+    <section class="section support-service" id="service">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="eyebrow">Service &amp; documentation</span>
+          <h2 class="section-title">Repairs, manuals, and warranty</h2>
+        </div>
+
+        <div class="support-service__inner">
+
+          <!-- Service request card -->
+          <div class="service-card card">
+            <div class="service-card__header">
+              <i class="ti ti-tool" aria-hidden="true"></i>
+              <h3 class="service-card__title">Request service or repair</h3>
+            </div>
+            <div class="service-card__body">
+              <p class="service-card__text">
+                All service and repairs are handled in-house at our Topsfield, MA
+                facility by the same team that builds the monitors. Typical turnaround
+                is under 5 business days.
+              </p>
+              <ol class="service-steps">
+                <li class="service-step">
+                  <span class="service-step__num">1</span>
+                  <span class="service-step__text">Contact support with your product model and serial number.</span>
+                </li>
+                <li class="service-step">
+                  <span class="service-step__num">2</span>
+                  <span class="service-step__text">We'll issue an RMA and shipping instructions.</span>
+                </li>
+                <li class="service-step">
+                  <span class="service-step__num">3</span>
+                  <span class="service-step__text">Send the unit in — we diagnose, repair, and return it.</span>
+                </li>
+              </ol>
+              <a href="contact.html?reason=support" class="btn btn--primary">
+                <i class="ti ti-send" aria-hidden="true"></i>
+                Start a service request
+              </a>
+            </div>
+          </div>
+
+          <!-- Downloads card -->
+          <div class="downloads-card card">
+            <div class="downloads-card__header">
+              <i class="ti ti-files" aria-hidden="true"></i>
+              <h3 class="service-card__title">Manuals &amp; documentation</h3>
+            </div>
+
+            <a href="#" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                740SELECT user manual
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Nightingale PPM3 user manual
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Nightingale PHM user manual
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Central System setup guide
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="doc-item doc-item--last">
+              <span class="doc-item__name">
+                <i class="ti ti-shield-check" aria-hidden="true"></i>
+                Warranty information
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Direct contact strip -->
+        <div class="support-contact">
+          <div class="support-contact__item">
+            <i class="ti ti-phone" aria-hidden="true"></i>
+            <div>
+              <div class="support-contact__label">Support phone</div>
+              <a href="tel:+19788871410" class="support-contact__value">+1 (978) 887-1410</a>
+            </div>
+          </div>
+          <div class="support-contact__item">
+            <i class="ti ti-mail" aria-hidden="true"></i>
+            <div>
+              <div class="support-contact__label">Support email</div>
+              <a href="mailto:customersupport@zoemedical.com" class="support-contact__value">customersupport@zoemedical.com</a>
+            </div>
+          </div>
+          <div class="support-contact__item">
+            <i class="ti ti-clock" aria-hidden="true"></i>
+            <div>
+              <div class="support-contact__label">Hours</div>
+              <div class="support-contact__value">Mon–Fri, 8am–5pm ET</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Zoe Medical, Inc.</div>
+        <p class="footer__tagline">Patient monitoring systems designed, manufactured, and supported in the USA since 1996. Factory-direct pricing for clinicians who need reliable, proven technology.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Products</div>
+        <a href="products/index.html">EMS / vital signs</a>
+        <a href="products/nightingale-ppm3.html">Oral surgery</a>
+        <a href="products/nightingale-phm.html">Physician office</a>
+        <a href="products/nightingale-central.html">Central monitoring</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="about.html">About us</a>
+        <a href="design-services.html">Design services</a>
+        <a href="support.html">Support</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Support</div>
+        <a href="support.html#videos">Video tutorials</a>
+        <a href="support.html#service">Service requests</a>
+        <a href="support.html#service">Manuals</a>
+        <a href="support.html#service">Warranty info</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 Zoe Medical, Incorporated. All rights reserved.</div>
+      <div class="footer__flag">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        Proudly made in Topsfield, MA
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — mobile nav + video filter
+       ============================================================ -->
+  <script>
+    // --- Mobile nav ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('is-open');
+      const isOpen = mobileNav.classList.contains('is-open');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+      });
+    });
+
+    // --- Video filter (same pattern as the products page) ---
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const videos     = document.querySelectorAll('.video-card');
+    const emptyState = document.getElementById('videosEmpty');
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(function(b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+
+        const filter = btn.dataset.filter;
+        let visibleCount = 0;
+
+        videos.forEach(function(video) {
+          if (filter === 'all' || video.dataset.product === filter) {
+            video.classList.remove('is-hidden');
+            visibleCount++;
+          } else {
+            video.classList.add('is-hidden');
+          }
+        });
+
+        emptyState.classList.toggle('is-visible', visibleCount === 0);
+      });
+    });
+
+    function resetVideoFilter() {
+      filterBtns.forEach(function(b) { b.classList.remove('is-active'); });
+      filterBtns[0].classList.add('is-active');
+      videos.forEach(function(video) { video.classList.remove('is-hidden'); });
+      emptyState.classList.remove('is-visible');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+/* ============================================================
+   PRODUCTS.CSS — styles for products/index.html
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   PAGE HEADER
+   Reuses the same .page-header pattern as contact.html.
+   The CSS lives in contact.css which is NOT loaded here —
+   so we redeclare the exact same rules.
+
+   LEARNING NOTE: This is a case where a shared partial would
+   help. In a real project you'd extract .page-header into
+   style.css so both pages can use it without duplication.
+   For now, redeclaring keeps each CSS file self-contained
+   and easy to read.
+   ------------------------------------------------------------ */
+.page-header {
+  background: var(--color-bg-blue);
+  border-bottom: 1px solid var(--color-border-blue);
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.page-header__title {
+  font-size: var(--text-2xl);
+  color: var(--color-text-heading);
+  margin: var(--space-xs) 0 var(--space-xs);
+}
+
+.page-header__sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+
+/* ------------------------------------------------------------
+   PRODUCTS BODY
+   ------------------------------------------------------------ */
+.products-body {
+  padding: var(--space-lg) 0 var(--space-xl);
+  background: var(--color-bg-light);
+}
+
+
+/* ------------------------------------------------------------
+   FILTER BAR
+   A row of toggle buttons — one per category + "All".
+   The active button gets a filled background; inactive ones
+   are outlined. JS adds/removes .is-active.
+   ------------------------------------------------------------ */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;            /* fully rounded pill shape */
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg-white);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.filter-btn i {
+  font-size: 15px;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary-mid);
+  color: var(--color-primary);
+}
+
+/* Active state — filled blue pill */
+.filter-btn.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+
+/* ------------------------------------------------------------
+   PRODUCT GRID
+   2x2 on desktop, 1 column on mobile.
+   Uses <article> elements — semantically correct for a list
+   of standalone product items.
+   ------------------------------------------------------------ */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+
+/* ------------------------------------------------------------
+   PRODUCT CARD (.pcard)
+   More detailed than the homepage product cards — includes
+   spec highlights and two CTAs (view specs + request quote).
+   Uses <article> in HTML for semantic correctness.
+   ------------------------------------------------------------ */
+.pcard {
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/*
+  .is-hidden is toggled by the filter JS.
+  We use opacity + scale instead of display:none so the
+  transition animates smoothly — display:none can't animate.
+  pointer-events:none prevents clicks on hidden cards.
+*/
+.pcard.is-hidden {
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
+  position: absolute;            /* take out of flow so grid reflows */
+  visibility: hidden;
+}
+
+/* Color-coded image areas — same palette as homepage cards */
+.pcard__image {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pcard__image i {
+  font-size: 56px;
+}
+
+.pcard__image--blue   { background: #E6F1FB; }
+.pcard__image--blue i { color: #378ADD; }
+
+.pcard__image--green   { background: #E1F5EE; }
+.pcard__image--green i { color: #0F6E56; }
+
+.pcard__image--amber   { background: #FAEEDA; }
+.pcard__image--amber i { color: #BA7517; }
+
+.pcard__image--purple   { background: #EEEDFE; }
+.pcard__image--purple i { color: #534AB7; }
+
+.pcard__body {
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;                       /* body grows to fill available height */
+}
+
+/* Row with category label + US-made badge */
+.pcard__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+}
+
+.pcard__category {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Small "US made" badge — compact version of the about page badge */
+.pcard__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #27500A;
+  background: #EAF3DE;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.pcard__badge i {
+  font-size: 11px;
+}
+
+.pcard__name {
+  font-size: var(--text-lg);
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+.pcard__model {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.pcard__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-body);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.pcard__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/*
+  Spec highlights — three quick facts in a row.
+  Each is an icon + short label. Gives procurement staff
+  the most scannable version of key specs.
+*/
+.pcard__highlights {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-xs) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pcard__highlight {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.pcard__highlight i {
+  font-size: 14px;
+  color: var(--color-primary-mid);
+}
+
+/*
+  Two CTAs side by side:
+    Left  — filled button → product detail page
+    Right — text link     → contact/quote
+  Keeping both visible means a ready-to-buy visitor and a
+  still-researching visitor both have a clear next step.
+*/
+.pcard__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: auto;              /* pushes actions to the bottom of the card */
+}
+
+.pcard__cta {
+  flex: 1;
+  justify-content: center;
+  padding: 10px;
+}
+
+.pcard__quote {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-primary);
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.pcard__quote:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   EMPTY STATE
+   Hidden by default. JS adds .is-visible when filter returns
+   zero results. aria-live="polite" on the element tells screen
+   readers to announce the change without interrupting the user.
+   ------------------------------------------------------------ */
+.products-empty {
+  display: none;                 /* hidden by default */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.products-empty.is-visible {
+  display: flex;
+}
+
+.products-empty i {
+  font-size: 40px;
+  opacity: 0.4;
+}
+
+.products-empty p {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+}
+
+
+/* ------------------------------------------------------------
+   CLOSING CTA BAND
+   ------------------------------------------------------------ */
+.products-cta {
+  background: var(--color-primary);
+  padding: var(--space-lg) 0;
+}
+
+.products-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.products-cta__title {
+  font-size: var(--text-xl);
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.products-cta__sub {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.70);
+  max-width: 440px;
+}
+
+.products-cta__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+.products-cta__phone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(255,255,255,0.80);
+  transition: color 0.15s;
+}
+
+.products-cta__phone:hover {
+  color: #fff;
+}
+
+.products-cta__phone i {
+  font-size: 16px;
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+
+  /* Single column on mobile */
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Filter bar scrolls horizontally on narrow screens */
+  .filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: var(--space-sm);
+    /* hide scrollbar visually but keep it functional */
+    scrollbar-width: none;
+  }
+  .filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Filter buttons never shrink — stay their natural width */
+  .filter-btn {
+    flex-shrink: 0;
+  }
+
+  /* CTA band stacks */
+  .products-cta__inner {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .products-cta__sub {
+    max-width: 100%;
+  }
+}

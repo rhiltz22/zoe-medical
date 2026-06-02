@@ -1,0 +1,517 @@
+/* ============================================================
+   CONTACT.CSS — styles for contact.html only
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   PAGE HEADER
+   Blue band that opens the page — same pattern used on about.html.
+   Pull into a shared utility if you add more pages that need it.
+   ------------------------------------------------------------ */
+.page-header {
+  background: var(--color-bg-blue);
+  border-bottom: 1px solid var(--color-border-blue);
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.page-header__title {
+  font-size: var(--text-2xl);
+  color: var(--color-text-heading);
+  margin: var(--space-xs) 0 var(--space-xs);
+}
+
+.page-header__sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+
+/* ------------------------------------------------------------
+   CONTACT BODY LAYOUT
+   Left column is wider (holds the form + departments).
+   Right column is narrower (holds map + hours).
+   ------------------------------------------------------------ */
+.contact-body {
+  padding: var(--space-lg) 0 var(--space-xl);
+  background: var(--color-bg-light);
+}
+
+.contact-body__inner {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.contact-body__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Sidebar is sticky — stays visible as the left column scrolls */
+.contact-body__sidebar {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-md));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSE BANNER
+   Green banner above the form — sets expectations and reduces
+   hesitation before the visitor starts filling out fields.
+   ------------------------------------------------------------ */
+.response-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  background: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.response-banner i {
+  font-size: 20px;
+  color: #3B6D11;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.response-banner strong {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-success-text);
+  margin-bottom: 2px;
+}
+
+.response-banner span {
+  font-size: var(--text-sm);
+  color: #3B6D11;
+  line-height: 1.5;
+}
+
+
+/* ------------------------------------------------------------
+   FORM CARD
+   White card that wraps the entire contact form.
+   ------------------------------------------------------------ */
+.form-card {
+  /* .card from style.css gives border + border-radius + white bg */
+}
+
+.form-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.form-card__header i {
+  font-size: 18px;
+  color: var(--color-primary);
+}
+
+.form-card__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+.contact-form {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/*
+  .form-row puts two fields side by side.
+  On mobile, @media at the bottom collapses this to 1 column.
+*/
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+/* Individual field: label stacked above input */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-field__label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.3px;
+}
+
+.form-field__optional {
+  font-weight: 400;
+  color: var(--color-text-muted);
+  opacity: 0.7;
+}
+
+/*
+  All inputs, selects, and textareas share the same base style.
+  Applying the class to all three avoids duplicating CSS rules.
+*/
+.form-field__input {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: var(--text-sm);
+  font-family: inherit;
+  color: var(--color-text-body);
+  width: 100%;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+/* :focus is the state when the input is selected/active */
+.form-field__input:focus {
+  outline: none;
+  border-color: var(--color-primary-mid);
+  box-shadow: 0 0 0 3px rgba(55,138,221,0.15);   /* soft blue glow */
+}
+
+/* :invalid + :not(:placeholder-shown) styles invalid inputs
+   ONLY after the user has typed something (not on page load) */
+.form-field__input:invalid:not(:placeholder-shown) {
+  border-color: #DC2626;
+}
+
+.form-field__select {
+  appearance: none;          /* remove browser default dropdown arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%236B7280' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;       /* make room for the custom arrow */
+  cursor: pointer;
+}
+
+.form-field__textarea {
+  resize: vertical;          /* user can drag to resize vertically only */
+  min-height: 120px;
+}
+
+/* Form footer: submit button + privacy note side by side */
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding-top: var(--space-xs);
+}
+
+.form-footer__privacy {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.form-footer__privacy i {
+  font-size: 13px;
+}
+
+
+/* ------------------------------------------------------------
+   DEPARTMENT GRID
+   2x2 grid of department contact blocks.
+   Serves returning customers who know exactly who they need.
+   ------------------------------------------------------------ */
+.dept-card {
+  /* .card from style.css */
+}
+
+.dept-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dept-card__header i {
+  font-size: 18px;
+  color: var(--color-primary);
+}
+
+.dept-card__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+/*
+  CSS grid with repeat(2, 1fr) — two equal columns.
+  Each cell has a border-right and border-bottom creating
+  a visual table effect without using an actual <table>.
+*/
+.dept-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.dept-item {
+  padding: var(--space-md);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Remove right border on even items (right column) */
+.dept-item:nth-child(even) {
+  border-right: none;
+}
+
+/* Remove bottom border on last two items */
+.dept-item--last,
+.dept-item--last ~ .dept-item {
+  border-bottom: none;
+}
+
+.dept-item__name {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-heading);
+}
+
+.dept-item__name i {
+  font-size: 15px;
+  color: var(--color-primary);
+}
+
+.dept-item__detail {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.dept-item__detail a {
+  color: var(--color-primary);
+  transition: opacity 0.15s;
+}
+
+.dept-item__detail a:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dept-item__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-top: auto;          /* pushes link to the bottom of the cell */
+  transition: gap 0.15s;
+}
+
+.dept-item__link:hover {
+  gap: 7px;                  /* arrow slides right on hover */
+}
+
+.dept-item__link i {
+  font-size: 13px;
+}
+
+
+/* ------------------------------------------------------------
+   INFO CARD (location + contact details)
+   ------------------------------------------------------------ */
+.info-card {
+  /* .card from style.css */
+}
+
+.info-card__header {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+}
+
+/* Map placeholder — swap this <div> for a real <iframe> */
+.map-placeholder {
+  background: var(--color-bg-blue);
+  height: 130px;
+  margin: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px dashed var(--color-border-blue);
+}
+
+.map-placeholder i {
+  font-size: 24px;
+  color: var(--color-primary);
+}
+
+.map-placeholder span {
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.map-placeholder code {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+/* Info items: icon + label + value */
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: 12px var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.info-item--last {
+  border-bottom: none;
+}
+
+.info-item i {
+  font-size: 18px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-item__label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.info-item__value {
+  font-size: var(--text-sm);
+  color: var(--color-text-body);
+  font-weight: 500;
+  line-height: 1.5;
+  font-style: normal;        /* <address> is italic by default — override it */
+}
+
+a.info-item__value {
+  color: var(--color-text-body);
+  transition: color 0.15s;
+}
+
+a.info-item__value:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   HOURS CARD
+   ------------------------------------------------------------ */
+.hours-card {
+  /* .card from style.css */
+}
+
+.hours-card__header {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+
+.hours-row--last {
+  border-bottom: none;
+}
+
+.hours-row__day {
+  color: var(--color-text-muted);
+}
+
+.hours-row__time {
+  color: var(--color-text-body);
+  font-weight: 500;
+}
+
+.hours-row__closed {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSIVE — Contact page on mobile
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+
+  /* Stack main content above sidebar */
+  .contact-body__inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* Sidebar is no longer sticky on mobile */
+  .contact-body__sidebar {
+    position: static;
+  }
+
+  /* Form rows collapse to single column */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Department grid collapses to single column */
+  .dept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* On single column, all items get a right border removed */
+  .dept-item {
+    border-right: none;
+  }
+
+  /* Last item still loses its bottom border */
+  .dept-item--last {
+    border-bottom: none;
+  }
+
+  .form-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

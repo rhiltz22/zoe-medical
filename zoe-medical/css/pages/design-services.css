@@ -1,0 +1,293 @@
+/* ============================================================
+   DESIGN-SERVICES.CSS — styles for design-services.html
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   PAGE HEADER (same pattern as other interior pages)
+   ------------------------------------------------------------ */
+.page-header {
+  background: var(--color-bg-blue);
+  border-bottom: 1px solid var(--color-border-blue);
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.page-header__title {
+  font-size: var(--text-2xl);
+  color: var(--color-text-heading);
+  margin: var(--space-xs) 0 var(--space-xs);
+}
+
+.page-header__sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+
+/* ------------------------------------------------------------
+   INTRO — "stable platform" narrative + images
+   ------------------------------------------------------------ */
+.ds-intro__inner {
+  display: grid;
+  grid-template-columns: 3fr 2fr;   /* text wider than images */
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.ds-intro__text p {
+  font-size: var(--text-sm);
+  color: var(--color-text-body);
+  line-height: 1.75;
+  margin-bottom: var(--space-sm);
+}
+
+.ds-intro__text p:last-child {
+  margin-bottom: 0;
+}
+
+.ds-intro__text strong {
+  color: var(--color-text-heading);
+  font-weight: 600;
+}
+
+/* Two stacked image placeholders */
+.ds-intro__images {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.ds-intro__img-placeholder {
+  background: var(--color-bg-blue);
+  border: 1px solid var(--color-border-blue);
+  border-radius: var(--radius-md);
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ds-intro__img-placeholder i {
+  font-size: 40px;
+  color: var(--color-primary-mid);
+}
+
+.ds-intro__img-placeholder span {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+
+/* ------------------------------------------------------------
+   CAPABILITIES GRID
+   Six cards, 3 columns on desktop.
+   ------------------------------------------------------------ */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.capability-card {
+  padding: var(--space-md);
+}
+
+.capability-card__icon {
+  width: 44px;
+  height: 44px;
+  background: var(--color-bg-blue);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+}
+
+.capability-card__icon i {
+  font-size: 22px;
+  color: var(--color-primary);
+}
+
+.capability-card__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin-bottom: 6px;
+}
+
+.capability-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+
+/* ------------------------------------------------------------
+   CLIENTS / TRACK RECORD
+   ------------------------------------------------------------ */
+.client-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+/*
+  Client name plates — styled boxes standing in for logos.
+  When real logos are available, swap the text for <img> tags
+  and adjust padding.
+*/
+.client-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  min-width: 150px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.client-plate:hover {
+  border-color: var(--color-primary-mid);
+  box-shadow: var(--shadow-sm);
+}
+
+.ds-clients__note {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto var(--space-lg);
+}
+
+/* Global reach strip — three stat items in a row */
+.reach-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  padding: var(--space-md);
+  background: var(--color-bg-light);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.reach-strip__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.reach-strip__item i {
+  font-size: 20px;
+}
+
+
+/* ------------------------------------------------------------
+   CLOSING CTA BAND — centered, dark
+   ------------------------------------------------------------ */
+.ds-cta {
+  background: var(--color-primary-dark);
+  background-image: radial-gradient(ellipse at 50% 0%, #0C447C 0%, var(--color-primary-dark) 70%);
+  padding: var(--space-xl) 0;
+}
+
+.ds-cta__inner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ds-cta__icon {
+  font-size: 40px;
+  color: #85B7EB;
+  margin-bottom: var(--space-sm);
+}
+
+.ds-cta__title {
+  font-size: var(--text-xl);
+  color: #fff;
+  margin-bottom: var(--space-xs);
+}
+
+.ds-cta__sub {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.70);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+.ds-cta__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ds-cta__phone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(255,255,255,0.80);
+  transition: color 0.15s;
+}
+
+.ds-cta__phone:hover {
+  color: #fff;
+}
+
+.ds-cta__phone i {
+  font-size: 16px;
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+
+  .ds-intro__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  /* Capabilities: 1 column on mobile */
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reach strip stacks */
+  .reach-strip {
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+}
+
+/* Tablet: capabilities go 2 columns */
+@media (min-width: 769px) and (max-width: 1000px) {
+  .capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

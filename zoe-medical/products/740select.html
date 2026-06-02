@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<!--
+  740select.html — Product detail page: 740SELECT EMS Monitor
+  =============================================================
+  PAGE STRUCTURE:
+    1. <head>     — metadata, fonts, CSS links
+    2. <nav>      — identical to index.html (copy/paste)
+    3. <main>
+       - .breadcrumb       where you are in the site
+       - .product-hero     image + key info + CTA sidebar
+       - .product-body     specs table + features + sidebar downloads
+    4. <footer>   — identical to index.html (copy/paste)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>740SELECT Patient Monitor — Zoe Medical</title>
+  <meta name="description" content="Rugged, portable EMS vital signs monitor. Configurable parameters, hot-swap battery, US-made. Factory-direct from Zoe Medical.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <!-- Note the ../ prefix — this file is inside /products/ so we go up one level -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages/product.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV — same as every page, only the hrefs change (../ prefix)
+       ============================================================ -->
+  <nav class="nav">
+    <a href="../index.html" class="nav__logo">Zoe Medical</a>
+    <div class="nav__links">
+      <a href="index.html" class="active">Products</a>
+      <a href="../design-services.html">Design services</a>
+      <a href="../support.html">Support</a>
+      <a href="../about.html">About</a>
+    </div>
+    <a href="../contact.html" class="nav__cta">Request a quote</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="index.html">Products</a>
+    <a href="../design-services.html">Design services</a>
+    <a href="../support.html">Support</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html" class="nav__cta">Request a quote</a>
+  </div>
+
+
+  <main>
+
+    <!-- ----------------------------------------------------------
+         BREADCRUMB
+         Tells the visitor where they are: Home > Products > 740SELECT
+         Uses an <ol> (ordered list) because the order matters.
+         ---------------------------------------------------------- -->
+    <div class="breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb__list">
+          <li><a href="../index.html">Home</a></li>
+          <li aria-hidden="true">›</li>
+          <li><a href="index.html">Products</a></li>
+          <li aria-hidden="true">›</li>
+          <li aria-current="page">740SELECT</li>   <!-- current page, no link -->
+        </ol>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         PRODUCT HERO
+         Two columns: left = image stack, right = info + CTA box.
+         The CTA box (request a quote) is always visible on desktop
+         without scrolling — important for conversion.
+         ---------------------------------------------------------- -->
+    <section class="product-hero">
+      <div class="container">
+        <div class="product-hero__inner">
+
+          <!-- LEFT: product images -->
+          <div class="product-hero__images">
+
+            <!-- Main image display -->
+            <!--
+              Replace this placeholder div with a real <img> when you have photos:
+              <img src="../assets/images/740select-front.jpg"
+                   alt="740SELECT patient monitor, front view"
+                   class="product-hero__main-img">
+            -->
+            <div class="product-hero__main-img" aria-label="740SELECT product image placeholder">
+              <i class="ti ti-device-heart-monitor" aria-hidden="true"></i>
+              <span>Product photography</span>
+            </div>
+
+            <!-- Thumbnail strip — clicking each would swap the main image (JS needed for that later) -->
+            <div class="product-hero__thumbs">
+              <button class="product-hero__thumb is-active" aria-label="Front view">
+                <i class="ti ti-device-heart-monitor" aria-hidden="true"></i>
+              </button>
+              <button class="product-hero__thumb" aria-label="Side view">
+                <i class="ti ti-rotate-360" aria-hidden="true"></i>
+              </button>
+              <button class="product-hero__thumb" aria-label="In use">
+                <i class="ti ti-ambulance" aria-hidden="true"></i>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: product info + CTA -->
+          <div class="product-hero__info">
+
+            <div class="product-hero__category">EMS / Vital Signs</div>
+            <h1 class="product-hero__name">740SELECT Patient Monitor</h1>
+            <p class="product-hero__model">Model: ZM-740S — One monitor, many solutions</p>
+
+            <p class="product-hero__desc">
+              A rugged, portable vital signs monitor built for pre-hospital, transport,
+              and field environments. Configurable parameter sets let you spec exactly
+              what your service needs — no paying for parameters you'll never use.
+            </p>
+
+            <!-- Parameter tags -->
+            <div class="product-hero__tags">
+              <span class="tag">SpO2</span>
+              <span class="tag">NIBP</span>
+              <span class="tag">ECG</span>
+              <span class="tag">ETCO2</span>
+              <span class="tag">Temp</span>
+              <span class="tag">Portable</span>
+            </div>
+
+            <!-- US-made badge -->
+            <div class="product-hero__badge">
+              <i class="ti ti-building-factory" aria-hidden="true"></i>
+              Designed &amp; manufactured in Topsfield, MA
+            </div>
+
+            <!-- CTA box — this is the most important element on the page -->
+            <div class="product-cta-box">
+              <p class="product-cta-box__title">Ready to order or need more info?</p>
+              <p class="product-cta-box__sub">We quote directly — no distributors, no markup.</p>
+              <a href="../contact.html?product=740select" class="btn btn--white product-cta-box__btn">
+                Request a quote for this product
+              </a>
+              <p class="product-cta-box__phone">
+                <i class="ti ti-phone" aria-hidden="true"></i>
+                Or call <a href="tel:+19788871410">(978) 887-1410</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         PRODUCT BODY
+         Two columns: left = specs + features (main content)
+                      right = downloads + related products (sidebar)
+
+         On mobile these stack vertically (see product.css).
+         ---------------------------------------------------------- -->
+    <section class="product-body">
+      <div class="container">
+        <div class="product-body__inner">
+
+          <!-- LEFT: main content -->
+          <div class="product-body__main">
+
+            <!-- SPECS TABLE
+                 Using CSS grid rows instead of an HTML <table> — easier
+                 to style responsively while keeping the same visual result.
+            -->
+            <div class="spec-block card">
+              <div class="spec-block__header">
+                <h2 class="spec-block__title">Technical specifications</h2>
+              </div>
+
+              <!-- Each .spec-row is a key/value pair -->
+              <div class="spec-row">
+                <span class="spec-row__key">Display</span>
+                <span class="spec-row__val">7" color touchscreen, 800×480</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-row__key">Battery life</span>
+                <span class="spec-row__val">Up to 8 hours continuous use</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-row__key">Weight</span>
+                <span class="spec-row__val">2.8 lbs (1.27 kg) with battery</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-row__key">Standard parameters</span>
+                <span class="spec-row__val">SpO2, NIBP, 3-lead ECG, Temp</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-row__key">Optional parameters</span>
+                <span class="spec-row__val">12-lead ECG, ETCO2, IBP</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-row__key">Connectivity</span>
+                <span class="spec-row__val">Bluetooth, USB-C, optional Wi-Fi</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-row__key">Operating temp</span>
+                <span class="spec-row__val">0°C – 50°C (32°F – 122°F)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-row__key">Storage temp</span>
+                <span class="spec-row__val">-20°C – 60°C</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-row__key">IP rating</span>
+                <span class="spec-row__val">IP44 splash resistant</span>
+              </div>
+              <div class="spec-row spec-row--last">
+                <span class="spec-row__key">Warranty</span>
+                <span class="spec-row__val">2 years parts and labor</span>
+              </div>
+            </div>
+
+
+            <!-- FEATURES LIST -->
+            <div class="features-block card">
+              <div class="features-block__header">
+                <h2 class="spec-block__title">Key features</h2>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="ti ti-settings-2" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">Configurable parameter sets</h3>
+                  <p class="feature-item__desc">Spec only the parameters your service requires — keeps cost down and workflow simple. Add parameters later as your needs change.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="ti ti-battery-charging" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">Hot-swappable battery</h3>
+                  <p class="feature-item__desc">Swap batteries in the field without powering down. No interruption to patient monitoring during battery changes.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="ti ti-tool" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">US-based service and support</h3>
+                  <p class="feature-item__desc">All service and repairs handled in Topsfield, MA by the same team that built the product. Typical turnaround under 5 business days.</p>
+                </div>
+              </div>
+
+              <div class="feature-item feature-item--last">
+                <div class="feature-item__icon">
+                  <i class="ti ti-device-laptop" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">Compatible with Nightingale central monitoring</h3>
+                  <p class="feature-item__desc">Feeds live data to the Nightingale MPC nurse station system for fleet-wide alarm surveillance and trending.</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div><!-- end .product-body__main -->
+
+
+          <!-- RIGHT: sidebar -->
+          <aside class="product-body__sidebar">
+
+            <!-- Downloads -->
+            <div class="downloads-block card">
+              <div class="downloads-block__header">
+                <h2 class="spec-block__title">Downloads</h2>
+              </div>
+
+              <!--
+                Each download item links to a PDF in /assets/
+                Replace # with real paths when you have the files.
+              -->
+              <a href="#" class="download-item">
+                <div class="download-item__name">
+                  <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                  Product brochure
+                </div>
+                <span class="download-item__action">
+                  <i class="ti ti-download" aria-hidden="true"></i> PDF
+                </span>
+              </a>
+
+              <a href="#" class="download-item">
+                <div class="download-item__name">
+                  <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                  Technical datasheet
+                </div>
+                <span class="download-item__action">
+                  <i class="ti ti-download" aria-hidden="true"></i> PDF
+                </span>
+              </a>
+
+              <a href="#" class="download-item download-item--last">
+                <div class="download-item__name">
+                  <i class="ti ti-file-description" aria-hidden="true"></i>
+                  User manual
+                </div>
+                <span class="download-item__action">
+                  <i class="ti ti-download" aria-hidden="true"></i> PDF
+                </span>
+              </a>
+            </div>
+
+
+            <!-- Related products -->
+            <div class="related-block card">
+              <div class="downloads-block__header">
+                <h2 class="spec-block__title">Other products</h2>
+              </div>
+
+              <a href="nightingale-ppm3.html" class="related-item">
+                <div class="related-item__icon related-item__icon--green">
+                  <i class="ti ti-tooth" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <div class="related-item__name">Nightingale PPM3</div>
+                  <div class="related-item__cat">Oral &amp; outpatient surgery</div>
+                </div>
+                <i class="ti ti-chevron-right related-item__arrow" aria-hidden="true"></i>
+              </a>
+
+              <a href="nightingale-phm.html" class="related-item">
+                <div class="related-item__icon related-item__icon--amber">
+                  <i class="ti ti-stethoscope" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <div class="related-item__name">Nightingale PHM</div>
+                  <div class="related-item__cat">Physician office</div>
+                </div>
+                <i class="ti ti-chevron-right related-item__arrow" aria-hidden="true"></i>
+              </a>
+
+              <a href="nightingale-central.html" class="related-item related-item--last">
+                <div class="related-item__icon related-item__icon--purple">
+                  <i class="ti ti-layout-dashboard" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <div class="related-item__name">Nightingale System</div>
+                  <div class="related-item__cat">Central monitoring</div>
+                </div>
+                <i class="ti ti-chevron-right related-item__arrow" aria-hidden="true"></i>
+              </a>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — identical to index.html, just update hrefs
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Zoe Medical, Inc.</div>
+        <p class="footer__tagline">Patient monitoring systems designed, manufactured, and supported in the USA since 1996. Factory-direct pricing for clinicians who need reliable, proven technology.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Products</div>
+        <a href="index.html">EMS / vital signs</a>
+        <a href="nightingale-ppm3.html">Oral surgery</a>
+        <a href="nightingale-phm.html">Physician office</a>
+        <a href="nightingale-central.html">Central monitoring</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="../about.html">About us</a>
+        <a href="../design-services.html">Design services</a>
+        <a href="../support.html">Support</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Support</div>
+        <a href="../support.html">Downloads</a>
+        <a href="../support.html#service">Service requests</a>
+        <a href="../support.html">FAQs</a>
+        <a href="../support.html#service">Warranty info</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 Zoe Medical, Incorporated. All rights reserved.</div>
+      <div class="footer__flag">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        Proudly made in Topsfield, MA
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('is-open');
+      const isOpen = mobileNav.classList.contains('is-open');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<!--
+  about.html — About page
+  ========================
+  PAGE STRUCTURE:
+    1. <head>     — metadata, fonts, CSS links
+    2. <nav>      — identical to every other page
+    3. <main>
+       - .about-hero       dark banner: headline + facility image
+       - .about-stats      four key numbers in a blue bar
+       - .about-story      two columns: company story + timeline
+       - .about-mfg        manufacturing section: image + bullet points
+       - .about-team       three team member cards
+       - .about-values     three value proposition cards
+       - .about-cta        closing call-to-action band
+    4. <footer>   — identical to every other page
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Zoe Medical</title>
+  <meta name="description" content="Zoe Medical has been designing and manufacturing patient monitoring systems in Topsfield, MA since 1996. Learn about our team, our facility, and our approach.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV — identical across all pages
+       ============================================================ -->
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Zoe Medical</a>
+    <div class="nav__links">
+      <a href="products/index.html">Products</a>
+      <a href="design-services.html">Design services</a>
+      <a href="support.html">Support</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="products/index.html">Products</a>
+    <a href="design-services.html">Design services</a>
+    <a href="support.html">Support</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+  </div>
+
+
+  <main>
+
+    <!-- ----------------------------------------------------------
+         HERO
+         Dark background breaks the pattern from other pages —
+         a visual signal that this is a different kind of page.
+         Two columns: headline text left, facility image right.
+         ---------------------------------------------------------- -->
+    <section class="about-hero">
+      <div class="container">
+        <div class="about-hero__inner">
+
+          <div class="about-hero__text">
+            <span class="about-hero__eyebrow">About Zoe Medical</span>
+            <h1 class="about-hero__title">
+              30 years of clinical-grade<br>
+              engineering from Topsfield, MA
+            </h1>
+            <p class="about-hero__body">
+              Founded in 1996, Zoe Medical has grown from a small New England
+              design shop into one of the largest manufacturers of patient monitoring
+              systems in the United States. Every product we ship is designed, built,
+              and supported under one roof — 30 miles north of Boston.
+            </p>
+          </div>
+
+          <!--
+            Replace this placeholder with a real facility or team photo:
+            <img src="assets/images/facility.jpg"
+                 alt="Zoe Medical manufacturing facility in Topsfield, MA"
+                 class="about-hero__img">
+          -->
+          <div class="about-hero__img-placeholder" aria-label="Facility photo placeholder">
+            <i class="ti ti-building-factory-2" aria-hidden="true"></i>
+            <span>Facility / team photography</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         STATS BAR
+         Four key numbers on a blue band immediately below the hero.
+         Scannable at a glance — reinforces credibility fast.
+         ---------------------------------------------------------- -->
+    <div class="about-stats">
+      <div class="about-stats__item">
+        <div class="about-stats__number">1996</div>
+        <div class="about-stats__label">Year founded</div>
+      </div>
+      <div class="about-stats__item">
+        <div class="about-stats__number">30+</div>
+        <div class="about-stats__label">Years in business</div>
+      </div>
+      <div class="about-stats__item">
+        <div class="about-stats__number">10k+</div>
+        <div class="about-stats__label">Units installed worldwide</div>
+      </div>
+      <div class="about-stats__item">
+        <div class="about-stats__number">100%</div>
+        <div class="about-stats__label">US designed &amp; built</div>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         STORY + TIMELINE
+         Two columns: company narrative left, visual timeline right.
+         The <time> element is used for each milestone year.
+         ---------------------------------------------------------- -->
+    <section class="section">
+      <div class="container">
+        <div class="about-story__inner">
+
+          <!-- Left: narrative -->
+          <div class="about-story__text">
+            <span class="eyebrow">Our story</span>
+            <h2 class="section-title">Built for clinicians, by engineers who care</h2>
+            <p>
+              Most of our early work was designing and building monitoring products
+              for other companies — including some of the world's most recognized
+              healthcare organizations. That deep OEM experience gave us insight
+              into what clinicians actually need from a monitor: reliability,
+              simplicity, and a manufacturer that answers the phone.
+            </p>
+            <p style="margin-top: var(--space-sm);">
+              Today we distribute monitors under our own Zoe Medical and Nightingale
+              labels at factory-direct prices, passing the savings from cutting out
+              distributors directly to our customers. Same engineering, no middlemen.
+            </p>
+          </div>
+
+          <!-- Right: timeline
+               Each milestone is an <li> with a dot and a vertical line.
+               The line is created with a CSS border-left on the <li>,
+               not a separate element — cleaner HTML.
+          -->
+          <div class="timeline">
+            <span class="eyebrow">Company timeline</span>
+
+            <ol class="timeline__list">
+
+              <li class="timeline__item">
+                <div class="timeline__marker" aria-hidden="true"></div>
+                <div class="timeline__content">
+                  <time class="timeline__year" datetime="1996">1996</time>
+                  <p class="timeline__event">
+                    Founded in Topsfield, MA as a contract medical device design and engineering firm.
+                  </p>
+                </div>
+              </li>
+
+              <li class="timeline__item">
+                <div class="timeline__marker" aria-hidden="true"></div>
+                <div class="timeline__content">
+                  <time class="timeline__year" datetime="2002">Early 2000s</time>
+                  <p class="timeline__event">
+                    Expanded into full manufacturing. First OEM contracts with major international healthcare brands.
+                  </p>
+                </div>
+              </li>
+
+              <li class="timeline__item">
+                <div class="timeline__marker" aria-hidden="true"></div>
+                <div class="timeline__content">
+                  <time class="timeline__year" datetime="2010">2010s</time>
+                  <p class="timeline__event">
+                    Launched the 740SELECT and Nightingale product lines under the Zoe Medical label. First direct-to-market sales.
+                  </p>
+                </div>
+              </li>
+
+              <li class="timeline__item timeline__item--last">
+                <div class="timeline__marker" aria-hidden="true"></div>
+                <div class="timeline__content">
+                  <time class="timeline__year" datetime="2024">Today</time>
+                  <p class="timeline__event">
+                    Tens of thousands of units installed across EMS, physician offices, and surgical settings worldwide.
+                  </p>
+                </div>
+              </li>
+
+            </ol>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         MANUFACTURING SECTION
+         Light background to break up the page visually.
+         Image left, three bullet points right.
+         ---------------------------------------------------------- -->
+    <section class="section section--light about-mfg">
+      <div class="container">
+
+        <span class="eyebrow">How we build</span>
+        <h2 class="section-title" style="margin-bottom: var(--space-lg);">
+          Everything under one roof in Topsfield
+        </h2>
+
+        <div class="about-mfg__inner">
+
+          <!--
+            Replace with a real facility/manufacturing photo:
+            <img src="assets/images/manufacturing.jpg"
+                 alt="Circuit boards being assembled at Zoe Medical"
+                 class="about-mfg__img">
+          -->
+          <div class="about-mfg__img-placeholder" aria-label="Manufacturing photo placeholder">
+            <i class="ti ti-circuit-board" aria-hidden="true"></i>
+            <span>Manufacturing facility photo</span>
+          </div>
+
+          <!-- Three manufacturing points -->
+          <div class="about-mfg__points">
+
+            <div class="mfg-point">
+              <div class="mfg-point__icon">
+                <i class="ti ti-pencil-code" aria-hidden="true"></i>
+              </div>
+              <div class="mfg-point__text">
+                <h3 class="mfg-point__title">In-house design</h3>
+                <p class="mfg-point__desc">
+                  Hardware, firmware, and software engineering all done internally.
+                  No outsourced development, no black-box components we can't service.
+                </p>
+              </div>
+            </div>
+
+            <div class="mfg-point">
+              <div class="mfg-point__icon">
+                <i class="ti ti-building-factory" aria-hidden="true"></i>
+              </div>
+              <div class="mfg-point__text">
+                <h3 class="mfg-point__title">US manufacturing</h3>
+                <p class="mfg-point__desc">
+                  Assembled and tested at our Topsfield, MA facility. Shorter lead
+                  times, tighter quality control, and no overseas supply chain risk.
+                </p>
+              </div>
+            </div>
+
+            <div class="mfg-point">
+              <div class="mfg-point__icon">
+                <i class="ti ti-headset" aria-hidden="true"></i>
+              </div>
+              <div class="mfg-point__text">
+                <h3 class="mfg-point__title">Direct support</h3>
+                <p class="mfg-point__desc">
+                  Service and repairs handled by the same engineers who built the
+                  product. No third-party service centers, no runaround.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         TEAM SECTION
+         Three cards — one per key team member.
+         Uses the .grid-3 utility class from style.css.
+
+         NOTE: The initials avatar approach is intentional.
+         Real headshots would go here, but many small B2B companies
+         are reluctant to put faces on their site. Start with initials
+         and upgrade to photos when you have them.
+         ---------------------------------------------------------- -->
+    <section class="section about-team">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="eyebrow">Our team</span>
+          <h2 class="section-title">The people behind the products</h2>
+        </div>
+
+        <div class="grid-3">
+
+          <div class="team-card card">
+            <!--
+              The avatar uses CSS to show initials in a colored circle.
+              Replace with an <img> when real headshots are available:
+              <img src="assets/images/team-founder.jpg"
+                   alt="[Founder name], Founder and CEO"
+                   class="team-card__photo">
+            -->
+            <div class="team-card__avatar team-card__avatar--blue"
+                 aria-label="Founder initials">JD</div>
+            <h3 class="team-card__name">[Founder name]</h3>
+            <p class="team-card__role">Founder &amp; CEO</p>
+            <p class="team-card__bio">
+              Placeholder — brief background on the founder: years of experience
+              in medical devices, the founding story, and vision for the company.
+              2–3 sentences is ideal.
+            </p>
+          </div>
+
+          <div class="team-card card">
+            <div class="team-card__avatar team-card__avatar--green"
+                 aria-label="Engineering lead initials">SR</div>
+            <h3 class="team-card__name">[Engineering lead]</h3>
+            <p class="team-card__role">Director of Engineering</p>
+            <p class="team-card__bio">
+              Placeholder — hardware/firmware background, key products they've
+              led, and years at Zoe Medical. Establishes technical credibility
+              with procurement teams.
+            </p>
+          </div>
+
+          <div class="team-card card">
+            <div class="team-card__avatar team-card__avatar--amber"
+                 aria-label="Support lead initials">MK</div>
+            <h3 class="team-card__name">[Support lead]</h3>
+            <p class="team-card__role">Customer Support Manager</p>
+            <p class="team-card__bio">
+              Placeholder — clinical or technical background, responsible for
+              service and training. A named support contact builds trust with
+              buyers who will eventually need service.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         VALUES SECTION
+         Three principles — not generic fluff, but actual competitive
+         differentiators Zoe Medical can substantiate.
+         ---------------------------------------------------------- -->
+    <section class="section section--light about-values">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="eyebrow">What we stand for</span>
+          <h2 class="section-title">Our principles</h2>
+        </div>
+
+        <div class="grid-3">
+
+          <div class="value-card">
+            <div class="value-card__icon">
+              <i class="ti ti-shield-check" aria-hidden="true"></i>
+            </div>
+            <h3 class="value-card__title">Clinical reliability</h3>
+            <p class="value-card__body">
+              Every product is built to perform in the moments that matter most.
+              We design and test to clinical-grade standards because there's no
+              acceptable failure rate when a patient is on the monitor.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-card__icon">
+              <i class="ti ti-trending-down" aria-hidden="true"></i>
+            </div>
+            <h3 class="value-card__title">Factory-direct value</h3>
+            <p class="value-card__body">
+              No distributors, no middlemen, no distributor markup. We sell direct
+              so clinicians get quality monitoring at a price that makes sense for
+              their budget — without sacrificing capability.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-card__icon">
+              <i class="ti ti-flag" aria-hidden="true"></i>
+            </div>
+            <h3 class="value-card__title">Made in America</h3>
+            <p class="value-card__body">
+              Designed, manufactured, and supported in Topsfield, MA. We believe
+              in domestic production and standing behind what we make — with the
+              team that built it, not a third-party service center.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         CLOSING CTA BAND
+         Every interior page should end with a clear next step.
+         For a B2B site, that's always "talk to us."
+         ---------------------------------------------------------- -->
+    <section class="about-cta">
+      <div class="container">
+        <div class="about-cta__inner">
+          <div>
+            <h2 class="about-cta__title">Ready to talk about your monitoring needs?</h2>
+            <p class="about-cta__sub">
+              We'd love to learn about your setup and find the right solution.
+            </p>
+          </div>
+          <a href="contact.html" class="btn btn--white">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — identical to every other page
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Zoe Medical, Inc.</div>
+        <p class="footer__tagline">Patient monitoring systems designed, manufactured, and supported in the USA since 1996. Factory-direct pricing for clinicians who need reliable, proven technology.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Products</div>
+        <a href="products/index.html">EMS / vital signs</a>
+        <a href="products/nightingale-ppm3.html">Oral surgery</a>
+        <a href="products/nightingale-phm.html">Physician office</a>
+        <a href="products/nightingale-central.html">Central monitoring</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="about.html">About us</a>
+        <a href="design-services.html">Design services</a>
+        <a href="support.html">Support</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Support</div>
+        <a href="support.html">Downloads</a>
+        <a href="support.html#service">Service requests</a>
+        <a href="support.html">FAQs</a>
+        <a href="support.html#service">Warranty info</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 Zoe Medical, Incorporated. All rights reserved.</div>
+      <div class="footer__flag">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        Proudly made in Topsfield, MA
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('is-open');
+      const isOpen = mobileNav.classList.contains('is-open');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!--
+  design-services.html — Design Services / OEM page
+  ===================================================
+  Content preserved from the original zoemedical.com/design-services/
+  page, restyled to match the redesign.
+
+  PAGE STRUCTURE:
+    1. <head>     — metadata, fonts, CSS links
+    2. <nav>      — identical to every other page
+    3. <main>
+       - .page-header        title + subtitle
+       - .ds-intro           "stable platform" narrative (2 cols: text + image)
+       - .ds-capabilities    grid of 6 capability areas
+       - .ds-clients         logos/names of past clients + global reach
+       - .ds-cta             closing "we look forward to meeting you" band
+    4. <footer>   — identical to every other page
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Services — Zoe Medical OEM &amp; Custom Engineering</title>
+  <meta name="description" content="Zoe Medical provides OEM design services: signal acquisition, industrial design, system architecture, regulatory testing, and US manufacturing. Trusted by leading patient monitoring companies.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/design-services.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Zoe Medical</a>
+    <div class="nav__links">
+      <a href="products/index.html">Products</a>
+      <a href="design-services.html" class="active">Design services</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="products/index.html">Products</a>
+    <a href="design-services.html">Design services</a>
+    <a href="support.html">Support</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+  </div>
+
+
+  <main>
+
+    <!-- ----------------------------------------------------------
+         PAGE HEADER
+         ---------------------------------------------------------- -->
+    <div class="page-header">
+      <div class="container">
+        <span class="eyebrow">Design services</span>
+        <h1 class="page-header__title">License our platform. Build under your own name.</h1>
+        <p class="page-header__sub">
+          For 30 years, Zoe Medical has designed and built patient monitoring
+          products for other companies — including some of the most respected
+          names in the field. Put that engineering to work for your product.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         INTRO — "The value of a stable platform"
+         Two columns: narrative text left, product cross-section right.
+         Content preserved from the original page.
+         ---------------------------------------------------------- -->
+    <section class="section ds-intro">
+      <div class="container">
+        <div class="ds-intro__inner">
+
+          <div class="ds-intro__text">
+            <span class="eyebrow">The value of a stable platform</span>
+            <h2 class="section-title">A design platform built to extend</h2>
+            <p>
+              Zoe Medical combines a broad suite of Microsoft technologies with
+              proprietary signal processing circuitry, algorithms, networking, and
+              user interface applications to create our patient monitoring solutions.
+              This approach leverages the rich feature set of the Windows and Azure
+              Cloud environments to create a design platform that is extendable.
+            </p>
+            <p>
+              Using this platform, we provide design services to companies who wish
+              to sell a customized version of our products under their own name, or
+              who wish to use our design as the backbone for a new product.
+            </p>
+            <p>
+              Based on your need, we can provide <strong>sub-assemblies</strong>,
+              <strong>turn-key systems</strong>, or <strong>a platform</strong> upon
+              which your own application can run.
+            </p>
+          </div>
+
+          <!--
+            Replace with the real product cross-section images from the
+            original page (PPM3 side view + cross section).
+            Place them in assets/images/ and swap these placeholders.
+          -->
+          <div class="ds-intro__images">
+            <div class="ds-intro__img-placeholder">
+              <i class="ti ti-device-heart-monitor" aria-hidden="true"></i>
+              <span>PPM3 side view</span>
+            </div>
+            <div class="ds-intro__img-placeholder">
+              <i class="ti ti-cpu" aria-hidden="true"></i>
+              <span>Cross-section / internals</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         CAPABILITIES
+         The six service areas from the original page, presented as
+         a clean grid instead of a bulleted list. Each gets an icon.
+         ---------------------------------------------------------- -->
+    <section class="section section--light">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="eyebrow">What we provide</span>
+          <h2 class="section-title">Full-service design support</h2>
+          <p class="section-sub">
+            From signal acquisition through regulatory testing and manufacturing —
+            engineering capabilities across the entire product lifecycle.
+          </p>
+        </div>
+
+        <div class="capabilities-grid">
+
+          <div class="capability-card card">
+            <div class="capability-card__icon">
+              <i class="ti ti-wave-sine" aria-hidden="true"></i>
+            </div>
+            <h3 class="capability-card__title">Signal acquisition &amp; processing</h3>
+            <p class="capability-card__desc">
+              EKG, respiration, SpO2, pressure, and temperature — circuitry and
+              algorithms developed and refined in-house.
+            </p>
+          </div>
+
+          <div class="capability-card card">
+            <div class="capability-card__icon">
+              <i class="ti ti-bulb" aria-hidden="true"></i>
+            </div>
+            <h3 class="capability-card__title">Industrial design</h3>
+            <p class="capability-card__desc">
+              Enclosure, ergonomics, and physical product design tailored to your
+              clinical environment and brand.
+            </p>
+          </div>
+
+          <div class="capability-card card">
+            <div class="capability-card__icon">
+              <i class="ti ti-sitemap" aria-hidden="true"></i>
+            </div>
+            <h3 class="capability-card__title">System architecture</h3>
+            <p class="capability-card__desc">
+              End-to-end architecture for monitoring systems, from device firmware
+              to networking and cloud integration.
+            </p>
+          </div>
+
+          <div class="capability-card card">
+            <div class="capability-card__icon">
+              <i class="ti ti-puzzle" aria-hidden="true"></i>
+            </div>
+            <h3 class="capability-card__title">3rd-party integration</h3>
+            <p class="capability-card__desc">
+              Integration of third-party signal processing modules and peripherals
+              into a cohesive, validated system.
+            </p>
+          </div>
+
+          <div class="capability-card card">
+            <div class="capability-card__icon">
+              <i class="ti ti-certificate" aria-hidden="true"></i>
+            </div>
+            <h3 class="capability-card__title">Regulatory testing</h3>
+            <p class="capability-card__desc">
+              US and European regulatory testing support — navigating compliance
+              requirements across multiple markets.
+            </p>
+          </div>
+
+          <div class="capability-card card">
+            <div class="capability-card__icon">
+              <i class="ti ti-building-factory-2" aria-hidden="true"></i>
+            </div>
+            <h3 class="capability-card__title">In-house manufacturing</h3>
+            <p class="capability-card__desc">
+              Manufacturing with full regulatory traceability, all under one roof
+              in Topsfield, MA.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         CLIENTS / TRACK RECORD
+         Preserves the original page's client list and global reach.
+         Named clients are a powerful trust signal for OEM buyers.
+         ---------------------------------------------------------- -->
+    <section class="section ds-clients">
+      <div class="container">
+
+        <div class="section-header section-header--center">
+          <span class="eyebrow">Track record</span>
+          <h2 class="section-title">Trusted by the industry's most respected names</h2>
+          <p class="section-sub" style="margin: 0 auto;">
+            Zoe Medical has provided design services to some of the world's most
+            well-respected patient monitoring companies.
+          </p>
+        </div>
+
+        <!-- Client names — in the final build these could be real logos.
+             Presented as styled name plates for now. -->
+        <div class="client-grid">
+          <div class="client-plate">Welch-Allyn</div>
+          <div class="client-plate">Spacelabs</div>
+          <div class="client-plate">Midmark</div>
+          <div class="client-plate">Mortara</div>
+          <div class="client-plate">Schiller</div>
+        </div>
+
+        <p class="ds-clients__note">
+          We've also provided services to educational institutions and companies
+          outside the conventional patient monitoring field — with design experience
+          spanning North America, Europe, the Middle East, China, and India.
+        </p>
+
+        <!-- Global reach stat strip -->
+        <div class="reach-strip">
+          <div class="reach-strip__item">
+            <i class="ti ti-world" aria-hidden="true"></i>
+            <span>5 global regions served</span>
+          </div>
+          <div class="reach-strip__item">
+            <i class="ti ti-calendar" aria-hidden="true"></i>
+            <span>30+ years of OEM experience</span>
+          </div>
+          <div class="reach-strip__item">
+            <i class="ti ti-flag" aria-hidden="true"></i>
+            <span>Designed &amp; built in the USA</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         CLOSING CTA — "We look forward to meeting you"
+         Preserves the original page's closing message and intent.
+         ---------------------------------------------------------- -->
+    <section class="ds-cta">
+      <div class="container">
+        <div class="ds-cta__inner">
+          <i class="ti ti-messages ds-cta__icon" aria-hidden="true"></i>
+          <h2 class="ds-cta__title">We look forward to meeting you</h2>
+          <p class="ds-cta__sub">
+            For a sales quote on Zoe products or services, or to learn more about
+            a potential design partnership, give us a call or send us a message.
+            We're always open to a conversation.
+          </p>
+          <div class="ds-cta__actions">
+            <a href="contact.html?reason=design" class="btn btn--white">Start a conversation</a>
+            <a href="tel:+19788871410" class="ds-cta__phone">
+              <i class="ti ti-phone" aria-hidden="true"></i>
+              (978) 887-1410
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Zoe Medical, Inc.</div>
+        <p class="footer__tagline">Patient monitoring systems designed, manufactured, and supported in the USA since 1996. Factory-direct pricing for clinicians who need reliable, proven technology.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Products</div>
+        <a href="products/index.html">EMS / vital signs</a>
+        <a href="products/nightingale-ppm3.html">Oral surgery</a>
+        <a href="products/nightingale-phm.html">Physician office</a>
+        <a href="products/nightingale-central.html">Central monitoring</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="about.html">About us</a>
+        <a href="design-services.html">Design services</a>
+        <a href="support.html">Support</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Support</div>
+        <a href="support.html">Downloads</a>
+        <a href="support.html">Service requests</a>
+        <a href="support.html">FAQs</a>
+        <a href="support.html">Warranty info</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 Zoe Medical, Incorporated. All rights reserved.</div>
+      <div class="footer__flag">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        Proudly made in Topsfield, MA
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('is-open');
+      const isOpen = mobileNav.classList.contains('is-open');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  </script>
+
+</body>
+</html>

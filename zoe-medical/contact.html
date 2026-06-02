@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<!--
+  contact.html — Contact page
+  ============================
+  PAGE STRUCTURE:
+    1. <head>     — metadata, fonts, CSS links
+    2. <nav>      — identical to every other page
+    3. <main>
+       - .page-header      title + subtitle
+       - .contact-body     two columns:
+            left  → response banner + form + department grid
+            right → location info + map + hours
+    4. <footer>   — identical to every other page
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Zoe Medical</title>
+  <meta name="description" content="Get in touch with Zoe Medical for sales quotes, technical support, or general enquiries. Based in Topsfield, MA. Response within one business day.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/contact.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV — identical across all pages
+       ============================================================ -->
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Zoe Medical</a>
+    <div class="nav__links">
+      <a href="products/index.html">Products</a>
+      <a href="design-services.html">Design services</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="contact.html" class="nav__cta active-cta">Request a quote</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="products/index.html">Products</a>
+    <a href="design-services.html">Design services</a>
+    <a href="support.html">Support</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+  </div>
+
+
+  <main>
+
+    <!-- ----------------------------------------------------------
+         PAGE HEADER
+         Blue band at the top — gives the page a clear identity
+         and sets expectations before the visitor reaches the form.
+         ---------------------------------------------------------- -->
+    <div class="page-header">
+      <div class="container">
+        <span class="eyebrow">Get in touch</span>
+        <h1 class="page-header__title">We'd love to hear from you</h1>
+        <p class="page-header__sub">
+          Whether you need a sales quote, have a support question, or want to
+          talk through a custom monitoring solution — a real person in Topsfield
+          will get back to you.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         CONTACT BODY
+         Two-column layout:
+           Left  (wider)  — response banner, form, department grid
+           Right (narrower) — address, map placeholder, hours
+
+         On mobile these stack vertically (see contact.css).
+         ---------------------------------------------------------- -->
+    <section class="contact-body">
+      <div class="container">
+        <div class="contact-body__inner">
+
+          <!-- ====================================================
+               LEFT COLUMN — form + departments
+               ==================================================== -->
+          <div class="contact-body__main">
+
+            <!-- Response time banner — placed ABOVE the form intentionally.
+                 Reduces hesitation before the visitor starts filling it out. -->
+            <div class="response-banner">
+              <i class="ti ti-clock" aria-hidden="true"></i>
+              <div>
+                <strong>Typical response time: same or next business day</strong>
+                <span>We don't use automated ticketing. Your message goes directly to our team.</span>
+              </div>
+            </div>
+
+
+            <!-- CONTACT FORM
+                 action="#" means it reloads the page on submit for now.
+                 To make it live, replace action="#" with a Formspree URL:
+                   action="https://formspree.io/f/YOUR_FORM_ID" (https://formspree.io/f/xgoqqzpl for this proj test.)
+                 Formspree is free for up to 50 submissions/month and
+                 requires no backend code — perfect for this project.
+            -->
+            <div class="form-card card">
+              <div class="form-card__header">
+                <i class="ti ti-mail" aria-hidden="true"></i>
+                <h2 class="form-card__title">Send us a message</h2>
+              </div>
+
+              <form class="contact-form" action="https://formspree.io/f/xgoqqzpl" method="POST" >
+
+                <!-- Two fields side by side using CSS grid -->
+                <div class="form-row">
+                  <div class="form-field">
+                    <label class="form-field__label" for="first-name">First name</label>
+                    <input
+                      class="form-field__input"
+                      type="text"
+                      id="first-name"
+                      name="first_name"
+                      placeholder="Jane"
+                      required
+                      autocomplete="given-name"
+                    >
+                  </div>
+                  <div class="form-field">
+                    <label class="form-field__label" for="last-name">Last name</label>
+                    <input
+                      class="form-field__input"
+                      type="text"
+                      id="last-name"
+                      name="last_name"
+                      placeholder="Smith"
+                      required
+                      autocomplete="family-name"
+                    >
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label class="form-field__label" for="email">Email address</label>
+                    <input
+                      class="form-field__input"
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="jane@clinic.org"
+                      required
+                      autocomplete="email"
+                    >
+                  </div>
+                  <div class="form-field">
+                    <!--
+                      Phone is optional — the label says so.
+                      Never mark optional fields as required.
+                    -->
+                    <label class="form-field__label" for="phone">
+                      Phone <span class="form-field__optional">(optional)</span>
+                    </label>
+                    <input
+                      class="form-field__input"
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="(617) 555-0199"
+                      autocomplete="tel"
+                    >
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label class="form-field__label" for="org">Organization</label>
+                    <input
+                      class="form-field__input"
+                      type="text"
+                      id="org"
+                      name="organization"
+                      placeholder="Riverside EMS"
+                      autocomplete="organization"
+                    >
+                  </div>
+                  <div class="form-field">
+                    <!--
+                      <select> lets Zoe route messages internally.
+                      The value attribute on each <option> is what
+                      gets submitted with the form — keep it lowercase
+                      and hyphenated for easy processing.
+                    -->
+                    <label class="form-field__label" for="reason">Reason for contact</label>
+                    <select class="form-field__input form-field__select" id="reason" name="reason">
+                      <option value="">Select one…</option>
+                      <option value="sales">Sales / quote request</option>
+                      <option value="support">Technical support</option>
+                      <option value="design">Custom design services</option>
+                      <option value="general">General enquiry</option>
+                      <option value="media">Media &amp; partnerships</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label class="form-field__label" for="message">Message</label>
+                  <textarea
+                    class="form-field__input form-field__textarea"
+                    id="message"
+                    name="message"
+                    placeholder="Tell us what you need — product interest, quantities, current setup, or anything else that helps us respond usefully."
+                    required
+                    rows="5"
+                  ></textarea>
+                </div>
+
+                <div class="form-footer">
+                  <button type="submit" class="btn btn--primary">
+                    <i class="ti ti-send" aria-hidden="true"></i>
+                    Send message
+                  </button>
+                  <span class="form-footer__privacy">
+                    <i class="ti ti-lock" aria-hidden="true"></i>
+                    We never share your information
+                  </span>
+                </div>
+
+              </form>
+            </div>
+
+
+            <!-- DEPARTMENT GRID
+                 Serves returning customers who know exactly who they need.
+                 A procurement manager looking for a quote behaves differently
+                 from a technician needing service — both need to find their
+                 path quickly without reading everything.
+            -->
+            <div class="dept-card card">
+              <div class="dept-card__header">
+                <i class="ti ti-building" aria-hidden="true"></i>
+                <h2 class="dept-card__title">Contact by department</h2>
+              </div>
+
+              <div class="dept-grid">
+
+                <div class="dept-item">
+                  <div class="dept-item__name">
+                    <i class="ti ti-tag" aria-hidden="true"></i>
+                    Sales &amp; quotes
+                  </div>
+                  <div class="dept-item__detail">
+                    <a href="tel:+19788871410">(978) 887-1410</a><br>
+                    <a href="mailto:customersupport@zoemedical.com">customersupport@zoemedical.com</a>
+                  </div>
+                  <a href="contact.html?reason=sales" class="dept-item__link">
+                    Request a quote <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class="dept-item">
+                  <div class="dept-item__name">
+                    <i class="ti ti-tool" aria-hidden="true"></i>
+                    Technical support
+                  </div>
+                  <div class="dept-item__detail">
+                    <a href="tel:+19788871410">(978) 887-1410</a><br>
+                    <a href="mailto:customersupport@zoemedical.com">customersupport@zoemedical.com</a>
+                  </div>
+                  <a href="contact.html?reason=support" class="dept-item__link">
+                    Submit a service request <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class="dept-item">
+                  <div class="dept-item__name">
+                    <i class="ti ti-pencil" aria-hidden="true"></i>
+                    Design services
+                  </div>
+                  <div class="dept-item__detail">
+                    Custom OEM monitoring solutions for healthcare organizations and device manufacturers.
+                  </div>
+                  <a href="contact.html?reason=design" class="dept-item__link">
+                    Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class="dept-item dept-item--last">
+                  <div class="dept-item__name">
+                    <i class="ti ti-news" aria-hidden="true"></i>
+                    Media &amp; partnerships
+                  </div>
+                  <div class="dept-item__detail">
+                    Press inquiries, distributor interest, and industry partnerships.
+                  </div>
+                  <a href="contact.html?reason=media" class="dept-item__link">
+                    Get in touch <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+
+          </div><!-- end .contact-body__main -->
+
+
+          <!-- ====================================================
+               RIGHT COLUMN — location info, map, hours
+               ==================================================== -->
+          <aside class="contact-body__sidebar">
+
+            <!-- Location card -->
+            <div class="info-card card">
+              <div class="info-card__header">Our location</div>
+
+              <!--
+                Google Maps embed — replace the src with your actual embed URL.
+                To get one: Google Maps → search the address → Share →
+                Embed a map → copy the iframe src URL.
+                The iframe below uses a placeholder src.
+              -->
+              <div class="map-placeholder" aria-label="Map of Zoe Medical location">
+                <i class="ti ti-map-pin" aria-hidden="true"></i>
+                <span>Google Maps embed goes here</span>
+                <code>&#x3C;iframe src="maps.google.com/embed?..."&#x3E;</code>
+              </div>
+
+              <div class="info-item">
+                <i class="ti ti-map-pin" aria-hidden="true"></i>
+                <div>
+                  <div class="info-item__label">Address</div>
+                  <address class="info-item__value">
+                    460 Boston Street<br>Topsfield, MA 01983
+                  </address>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <i class="ti ti-phone" aria-hidden="true"></i>
+                <div>
+                  <div class="info-item__label">Main line</div>
+                  <a href="tel:+19788871410" class="info-item__value">+1 (978) 887-1410</a>
+                </div>
+              </div>
+
+              <div class="info-item info-item--last">
+                <i class="ti ti-mail" aria-hidden="true"></i>
+                <div>
+                  <div class="info-item__label">Email</div>
+                  <a href="mailto:customersupport@zoemedical.com" class="info-item__value">
+                    customersupport@zoemedical.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Business hours card -->
+            <div class="hours-card card">
+              <div class="hours-card__header">Business hours (ET)</div>
+
+              <!--
+                <time> is a semantic HTML element for dates and times.
+                The datetime attribute gives machines a readable format
+                even though the displayed text is human-friendly.
+              -->
+              <div class="hours-row">
+                <span class="hours-row__day">Monday</span>
+                <time class="hours-row__time" datetime="08:00-17:00">8:00 am – 5:00 pm</time>
+              </div>
+              <div class="hours-row">
+                <span class="hours-row__day">Tuesday</span>
+                <time class="hours-row__time" datetime="08:00-17:00">8:00 am – 5:00 pm</time>
+              </div>
+              <div class="hours-row">
+                <span class="hours-row__day">Wednesday</span>
+                <time class="hours-row__time" datetime="08:00-17:00">8:00 am – 5:00 pm</time>
+              </div>
+              <div class="hours-row">
+                <span class="hours-row__day">Thursday</span>
+                <time class="hours-row__time" datetime="08:00-17:00">8:00 am – 5:00 pm</time>
+              </div>
+              <div class="hours-row">
+                <span class="hours-row__day">Friday</span>
+                <time class="hours-row__time" datetime="08:00-17:00">8:00 am – 5:00 pm</time>
+              </div>
+              <div class="hours-row">
+                <span class="hours-row__day">Saturday</span>
+                <span class="hours-row__closed">Closed</span>
+              </div>
+              <div class="hours-row hours-row--last">
+                <span class="hours-row__day">Sunday</span>
+                <span class="hours-row__closed">Closed</span>
+              </div>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — identical to every other page
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Zoe Medical, Inc.</div>
+        <p class="footer__tagline">Patient monitoring systems designed, manufactured, and supported in the USA since 1996. Factory-direct pricing for clinicians who need reliable, proven technology.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Products</div>
+        <a href="products/index.html">EMS / vital signs</a>
+        <a href="products/nightingale-ppm3.html">Oral surgery</a>
+        <a href="products/nightingale-phm.html">Physician office</a>
+        <a href="products/nightingale-central.html">Central monitoring</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="about.html">About us</a>
+        <a href="design-services.html">Design services</a>
+        <a href="support.html">Support</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Support</div>
+        <a href="support.html">Downloads</a>
+        <a href="support.html#service">Service requests</a>
+        <a href="support.html">FAQs</a>
+        <a href="support.html#service">Warranty info</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 Zoe Medical, Incorporated. All rights reserved.</div>
+      <div class="footer__flag">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        Proudly made in Topsfield, MA
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('is-open');
+      const isOpen = mobileNav.classList.contains('is-open');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  </script>
+
+</body>
+</html>

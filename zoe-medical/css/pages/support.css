@@ -1,0 +1,513 @@
+/* ============================================================
+   SUPPORT.CSS — styles for support.html
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   PAGE HEADER (shared pattern)
+   ------------------------------------------------------------ */
+.page-header {
+  background: var(--color-bg-blue);
+  border-bottom: 1px solid var(--color-border-blue);
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.page-header__title {
+  font-size: var(--text-2xl);
+  color: var(--color-text-heading);
+  margin: var(--space-xs) 0 var(--space-xs);
+}
+
+.page-header__sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+
+/* ------------------------------------------------------------
+   QUICK LINKS
+   Three jump-to cards. Pulled up to overlap the header slightly
+   using a negative margin for a polished "floating" effect.
+   ------------------------------------------------------------ */
+.support-quicklinks {
+  background: var(--color-bg-white);
+  padding: var(--space-lg) 0;
+}
+
+.quicklinks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+/* Each quicklink is a full <a> — whole card clickable */
+.quicklink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  text-decoration: none;
+}
+
+.quicklink__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quicklink__icon i {
+  font-size: 24px;
+}
+
+.quicklink__icon--blue  { background: #E6F1FB; }
+.quicklink__icon--blue i { color: #378ADD; }
+
+.quicklink__icon--green  { background: #E1F5EE; }
+.quicklink__icon--green i { color: #0F6E56; }
+
+.quicklink__icon--amber  { background: #FAEEDA; }
+.quicklink__icon--amber i { color: #BA7517; }
+
+.quicklink__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin-bottom: 3px;
+}
+
+.quicklink__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.quicklink__arrow {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.quicklink:hover .quicklink__arrow {
+  transform: translateX(3px);
+}
+
+
+/* ------------------------------------------------------------
+   FILTER BAR
+   Reuses the same look as the products page filter.
+   ------------------------------------------------------------ */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg-white);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.filter-btn i { font-size: 15px; }
+
+.filter-btn:hover {
+  border-color: var(--color-primary-mid);
+  color: var(--color-primary);
+}
+
+.filter-btn.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+
+/* ------------------------------------------------------------
+   VIDEO GRID
+   3 columns on desktop. Each card has a thumbnail + body.
+   ------------------------------------------------------------ */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* Hidden by filter — animates out, then removed from flow */
+.video-card.is-hidden {
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+/*
+  Thumbnail — placeholder with a play icon.
+  aspect-ratio keeps a consistent 16:9 video shape regardless
+  of card width. Replace inner content with an <iframe> embed.
+*/
+.video-card__thumb {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.video-card__thumb i {
+  font-size: 44px;
+  color: rgba(255,255,255,0.9);
+  transition: transform 0.15s;
+}
+
+.video-card:hover .video-card__thumb i {
+  transform: scale(1.1);
+}
+
+/* Color-coded thumbnails matching product colors */
+.video-card__thumb--blue   { background: linear-gradient(135deg, #378ADD, #185FA5); }
+.video-card__thumb--green  { background: linear-gradient(135deg, #1AA179, #0F6E56); }
+.video-card__thumb--amber  { background: linear-gradient(135deg, #D99A2B, #BA7517); }
+.video-card__thumb--purple { background: linear-gradient(135deg, #6F66C9, #534AB7); }
+
+/* Duration badge bottom-right of thumbnail */
+.video-card__duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.video-card__body {
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.video-card__product {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.video-card__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin: 4px 0 6px;
+  line-height: 1.35;
+}
+
+.video-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+
+/* ------------------------------------------------------------
+   VIDEOS EMPTY STATE
+   ------------------------------------------------------------ */
+.videos-empty {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.videos-empty.is-visible {
+  display: flex;
+}
+
+.videos-empty i {
+  font-size: 40px;
+  opacity: 0.4;
+}
+
+/* Note below the video grid */
+.support-videos__note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.support-videos__note i {
+  font-size: 16px;
+  color: var(--color-primary);
+}
+
+.support-videos__note a {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   SERVICE & DOWNLOADS
+   ------------------------------------------------------------ */
+.support-service__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  align-items: start;
+  margin-bottom: var(--space-md);
+}
+
+/* --- Service request card --- */
+.service-card__header,
+.downloads-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.service-card__header i,
+.downloads-card__header i {
+  font-size: 18px;
+  color: var(--color-primary);
+}
+
+.service-card__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+.service-card__body {
+  padding: var(--space-md);
+}
+
+.service-card__text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+/* Numbered service steps */
+.service-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.service-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.service-step__num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.service-step__text {
+  font-size: var(--text-sm);
+  color: var(--color-text-body);
+  line-height: 1.5;
+  padding-top: 2px;
+}
+
+/* --- Downloads card --- */
+.doc-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.doc-item:hover {
+  background: var(--color-bg-light);
+}
+
+.doc-item--last {
+  border-bottom: none;
+}
+
+.doc-item__name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-sm);
+  color: var(--color-text-body);
+}
+
+.doc-item__name i {
+  font-size: 18px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.doc-item__dl {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.doc-item:hover .doc-item__dl {
+  color: var(--color-primary);
+}
+
+
+/* ------------------------------------------------------------
+   DIRECT CONTACT STRIP
+   Three contact methods in a row on a light background.
+   ------------------------------------------------------------ */
+.support-contact {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-bg-blue);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-blue);
+}
+
+.support-contact__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.support-contact__item i {
+  font-size: 22px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.support-contact__label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.support-contact__value {
+  font-size: var(--text-sm);
+  color: var(--color-text-heading);
+  font-weight: 600;
+}
+
+a.support-contact__value:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+
+  .quicklinks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Filter bar scrolls horizontally */
+  .filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-btn { flex-shrink: 0; }
+
+  /* Videos go single column */
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Service section stacks */
+  .support-service__inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact strip stacks */
+  .support-contact {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+}
+
+/* Tablet: videos 2 columns */
+@media (min-width: 769px) and (max-width: 1000px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .quicklinks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------------
+   VIDEO EMBEDS
+   When a thumbnail is clicked, we replace it with an <iframe>
+   embed. These styles ensure the video fills the thumbnail area.
+   ------------------------------------------------------------ */
+.video-card__thumb iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

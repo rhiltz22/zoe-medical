@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!--
+  index.html — Zoe Medical homepage
+  ===================================
+  This file is the homepage of the site.
+
+  PAGE STRUCTURE (in order):
+    1. <head>     — metadata, font imports, CSS links
+    2. <nav>      — sticky navigation bar
+    3. <main>     — all visible page content
+       - .hero           hero section
+       - .trust-bar      four trust signals
+       - .products       product category cards
+       - .social-proof   stats + testimonials
+       - .contact-strip  inline quote form
+    4. <footer>   — site-wide footer
+    5. <script>   — mobile nav toggle (small JS, bottom of page)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoe Medical — US-Made Patient Monitoring Systems</title>
+  <meta name="description" content="Factory-direct patient monitors for EMS, physician offices, oral surgery, and central monitoring. Designed and manufactured in Topsfield, MA since 1996.">
+
+  <!-- Google Fonts — DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tabler Icons — the icon library used throughout the wireframes -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <!-- Global styles shared by every page -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page-specific styles for the homepage only -->
+  <link rel="stylesheet" href="css/pages/home.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV — copy this exact block into every page
+       The only thing that changes is which link has class="active"
+       ============================================================ -->
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Zoe Medical</a>
+
+    <div class="nav__links">
+      <a href="products/index.html" class="active">Products</a>
+      <a href="design-services.html">Design services</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+
+    <!-- Hamburger — JS at the bottom toggles .is-open on .nav__mobile -->
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer — hidden by default, shown when hamburger is clicked -->
+  <div class="nav__mobile" id="mobileNav">
+    <a href="products/index.html">Products</a>
+    <a href="design-services.html">Design services</a>
+    <a href="support.html">Support</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+  </div>
+
+
+  <!-- ============================================================
+       MAIN — all visible page content lives inside <main>
+       ============================================================ -->
+  <main>
+
+    <!-- ----------------------------------------------------------
+         HERO SECTION
+         Two-column layout: text left, product image right.
+         display: flex with a gap creates the two columns.
+         ---------------------------------------------------------- -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__inner">
+
+          <!-- Left column: all text content -->
+          <div class="hero__text">
+            <span class="hero__tag">
+              <i class="ti ti-building-factory" aria-hidden="true"></i>
+              Designed &amp; manufactured in the USA
+            </span>
+
+            <h1 class="hero__heading">
+              Patient monitoring<br>
+              built for the people<br>
+              who depend on it
+            </h1>
+
+            <p class="hero__sub">
+              Factory-direct patient monitors for EMS, physician offices,
+              oral surgery, and central monitoring. 30 years of clinical-grade
+              engineering from Topsfield, MA.
+            </p>
+
+            <div class="hero__actions">
+              <a href="contact.html" class="btn btn--white">Request a quote</a>
+              <a href="products/index.html" class="btn btn--outline-white">Browse products</a>
+            </div>
+          </div>
+
+          <!-- Right column: product image placeholder -->
+          <!--
+            In the final site, replace this <div> with an <img> tag:
+            <img src="../assets/images/hero-monitor.png" alt="Zoe Medical 740SELECT patient monitor">
+          -->
+          <div class="hero__image" aria-hidden="true">
+            <i class="ti ti-device-heart-monitor"></i>
+            <span>Product photography</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         TRUST BAR
+         Four trust signals in a horizontal row.
+         display: flex with space-around distributes them evenly.
+         ---------------------------------------------------------- -->
+    <div class="trust-bar">
+      <div class="container">
+        <div class="trust-bar__inner">
+
+          <div class="trust-bar__item">
+            <i class="ti ti-building-factory" aria-hidden="true"></i>
+            <span>Made in the USA</span>
+          </div>
+
+          <div class="trust-bar__divider" aria-hidden="true"></div>
+
+          <div class="trust-bar__item">
+            <i class="ti ti-calendar" aria-hidden="true"></i>
+            <span>30+ years in business</span>
+          </div>
+
+          <div class="trust-bar__divider" aria-hidden="true"></div>
+
+          <div class="trust-bar__item">
+            <i class="ti ti-world" aria-hidden="true"></i>
+            <span>Tens of thousands installed</span>
+          </div>
+
+          <div class="trust-bar__divider" aria-hidden="true"></div>
+
+          <div class="trust-bar__item">
+            <i class="ti ti-headset" aria-hidden="true"></i>
+            <span>US-based support</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         PRODUCTS SECTION
+         A 2x2 grid of product category cards.
+         CSS Grid handles the layout — see home.css for the rule.
+         Each card is an <a> tag so the whole card is clickable.
+         ---------------------------------------------------------- -->
+    <section class="section section--light" id="products">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="eyebrow">Product lines</span>
+          <h2 class="section-title">Monitoring solutions for every clinical setting</h2>
+          <p class="section-sub">All monitors designed and manufactured at our Topsfield, MA facility.</p>
+        </div>
+
+        <div class="product-grid">
+
+          <!-- Card 1: EMS -->
+          <a href="products/740select.html" class="product-card card">
+            <div class="product-card__image product-card__image--blue">
+              <i class="ti ti-ambulance" aria-hidden="true"></i>
+            </div>
+            <div class="product-card__body">
+              <div class="product-card__category">EMS / Vital Signs</div>
+              <h3 class="product-card__name">Emergency medical services</h3>
+              <p class="product-card__model">740SELECT</p>
+              <p class="product-card__desc">Rugged, portable vital signs monitoring for pre-hospital and transport environments.</p>
+              <div class="product-card__tags">
+                <span class="tag">SpO2</span>
+                <span class="tag">NIBP</span>
+                <span class="tag">ECG</span>
+                <span class="tag">Portable</span>
+              </div>
+              <span class="product-card__link">
+                View specs <i class="ti ti-arrow-right" aria-hidden="true"></i>
+              </span>
+            </div>
+          </a>
+
+          <!-- Card 2: Oral Surgery -->
+          <a href="products/nightingale-ppm3.html" class="product-card card">
+            <div class="product-card__image product-card__image--green">
+              <i class="ti ti-tooth" aria-hidden="true"></i>
+            </div>
+            <div class="product-card__body">
+              <div class="product-card__category">Oral &amp; Outpatient Surgery</div>
+              <h3 class="product-card__name">Oral &amp; outpatient surgery</h3>
+              <p class="product-card__model">Nightingale PPM3</p>
+              <p class="product-card__desc">Compact, intuitive monitoring for oral surgery suites and outpatient procedure rooms.</p>
+              <div class="product-card__tags">
+                <span class="tag">Capnography</span>
+                <span class="tag">SpO2</span>
+                <span class="tag">NIBP</span>
+              </div>
+              <span class="product-card__link">
+                View specs <i class="ti ti-arrow-right" aria-hidden="true"></i>
+              </span>
+            </div>
+          </a>
+
+          <!-- Card 3: Physician Office -->
+          <a href="products/nightingale-phm.html" class="product-card card">
+            <div class="product-card__image product-card__image--amber">
+              <i class="ti ti-stethoscope" aria-hidden="true"></i>
+            </div>
+            <div class="product-card__body">
+              <div class="product-card__category">Physician Office</div>
+              <h3 class="product-card__name">Physician office</h3>
+              <p class="product-card__model">Nightingale PHM</p>
+              <p class="product-card__desc">Compact spot-check monitor with thumb ECG. Built for busy clinical workflows.</p>
+              <div class="product-card__tags">
+                <span class="tag">Spot-check</span>
+                <span class="tag">Thumb ECG</span>
+                <span class="tag">Compact</span>
+              </div>
+              <span class="product-card__link">
+                View specs <i class="ti ti-arrow-right" aria-hidden="true"></i>
+              </span>
+            </div>
+          </a>
+
+          <!-- Card 4: Central Monitoring -->
+          <a href="products/nightingale-central.html" class="product-card card">
+            <div class="product-card__image product-card__image--purple">
+              <i class="ti ti-layout-dashboard" aria-hidden="true"></i>
+            </div>
+            <div class="product-card__body">
+              <div class="product-card__category">Central Monitoring</div>
+              <h3 class="product-card__name">Central monitoring</h3>
+              <p class="product-card__model">Nightingale System</p>
+              <p class="product-card__desc">Alarm surveillance, trending, and reporting across multiple beds from a nurse station.</p>
+              <div class="product-card__tags">
+                <span class="tag">Multi-bed</span>
+                <span class="tag">Alarming</span>
+                <span class="tag">Trending</span>
+              </div>
+              <span class="product-card__link">
+                View specs <i class="ti ti-arrow-right" aria-hidden="true"></i>
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         SOCIAL PROOF — Stats + Testimonials
+         ---------------------------------------------------------- -->
+    <section class="section section--blue" id="why-zoe">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="eyebrow">Why Zoe Medical</span>
+          <h2 class="section-title">Trusted by clinicians across the US</h2>
+          <p class="section-sub">Tens of thousands of installed units. Built, tested, and supported in Topsfield, MA.</p>
+        </div>
+
+        <!-- Stats row -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card__number">30+</div>
+            <div class="stat-card__label">Years in business</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number">10k+</div>
+            <div class="stat-card__label">Units installed worldwide</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number">100%</div>
+            <div class="stat-card__label">US designed &amp; manufactured</div>
+          </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="testimonials-grid">
+          <blockquote class="testimonial card">
+            <p class="testimonial__quote">"The 740SELECT has held up through years of daily field use. Support has always been responsive and knowledgeable."</p>
+            <footer class="testimonial__attr">EMS Director — Regional transport service, Northeast</footer>
+          </blockquote>
+          <blockquote class="testimonial card">
+            <p class="testimonial__quote">"Easy to train staff on, reliable in the OR, and the factory-direct pricing made the decision straightforward."</p>
+            <footer class="testimonial__attr">Office Manager — Oral Surgery Practice, Mid-Atlantic</footer>
+          </blockquote>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ----------------------------------------------------------
+         CONTACT STRIP
+         Two-column: form left, contact details right.
+         sits on the homepage so visitors never need to navigate
+         away just to start a conversation.
+         ---------------------------------------------------------- -->
+    <section class="contact-strip" id="contact">
+      <div class="container">
+        <div class="contact-strip__inner">
+
+          <!-- Left: form -->
+          <div class="contact-strip__form-col">
+            <h2 class="contact-strip__title">Get a quote or ask a question</h2>
+            <p class="contact-strip__sub">We respond within one business day. No automated runaround — you'll hear from a real person in Topsfield.</p>
+
+            <!--
+              NOTE: This form does NOT submit anywhere yet.
+              action="#" just reloads the page.  
+              !--UPDATE (filled w https://formspree.io/f/xgoqqzpl)--!
+            -->
+            <form class="contact-form" action="https://formspree.io/f/xgoqqzpl" method="POST">
+              <input class="contact-form__input" type="text"  name="name"  placeholder="Your name"            required>
+              <input class="contact-form__input" type="email" name="email" placeholder="Email address"        required>
+              <input class="contact-form__input" type="text"  name="org"   placeholder="Organization / practice">
+              <textarea class="contact-form__input contact-form__textarea" name="message" placeholder="What can we help you with?" rows="3"></textarea>
+              <button type="submit" class="btn btn--white">Send message</button>
+            </form>
+          </div>
+
+          <!-- Right: contact info -->
+          <div class="contact-strip__info-col">
+            <div class="contact-info-item">
+              <i class="ti ti-phone" aria-hidden="true"></i>
+              <div>
+                <div class="contact-info-item__label">Phone</div>
+                <a href="tel:+19788871410" class="contact-info-item__value">+1 (978) 887-1410</a>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <i class="ti ti-mail" aria-hidden="true"></i>
+              <div>
+                <div class="contact-info-item__label">Email</div>
+                <a href="mailto:customersupport@zoemedical.com" class="contact-info-item__value">customersupport@zoemedical.com</a>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <i class="ti ti-map-pin" aria-hidden="true"></i>
+              <div>
+                <div class="contact-info-item__label">Address</div>
+                <div class="contact-info-item__value">460 Boston Street<br>Topsfield, MA 01983</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <i class="ti ti-clock" aria-hidden="true"></i>
+              <div>
+                <div class="contact-info-item__label">Business hours</div>
+                <div class="contact-info-item__value">Mon–Fri, 8am–5pm ET</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — copy into every page
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__grid">
+
+      <div class="footer__col">
+        <div class="footer__brand">Zoe Medical, Inc.</div>
+        <p class="footer__tagline">Patient monitoring systems designed, manufactured, and supported in the USA since 1996. Factory-direct pricing for clinicians who need reliable, proven technology.</p>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Products</div>
+        <a href="products/index.html">EMS / vital signs</a>
+        <a href="products/nightingale-ppm3.html">Oral surgery</a>
+        <a href="products/nightingale-phm.html">Physician office</a>
+        <a href="products/nightingale-central.html">Central monitoring</a>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="about.html">About us</a>
+        <a href="design-services.html">Design services</a>
+        <a href="support.html">Support</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Support</div>
+        <a href="support.html">Downloads</a>
+        <a href="support.html#service">Service requests</a>
+        <a href="support.html">FAQs</a>
+        <a href="support.html#service">Warranty info</a>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 Zoe Medical, Incorporated. All rights reserved.</div>
+      <div class="footer__flag">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        Proudly made in Topsfield, MA
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — mobile nav toggle
+       This is the only JS on the homepage. It listens for a click
+       on the hamburger button and adds/removes the .is-open class
+       on the mobile nav drawer.
+       ============================================================ -->
+  <script>
+    const hamburger  = document.getElementById('hamburger');
+    const mobileNav  = document.getElementById('mobileNav');
+
+    hamburger.addEventListener('click', function() {
+      // Toggle the mobile nav open/closed
+      mobileNav.classList.toggle('is-open');
+
+      // Update aria-label for accessibility
+      const isOpen = mobileNav.classList.contains('is-open');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+
+    // Close the mobile nav if user clicks a link inside it
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  </script>
+
+</body>
+</html>
