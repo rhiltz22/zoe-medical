@@ -165,6 +165,9 @@ p {
 }
 
 .nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   color: #fff;
   font-size: var(--text-base);
   font-weight: 600;

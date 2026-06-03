@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180" role="img" aria-label="Zoe Medical">
+  <title>Zoe Medical</title>
+  <circle cx="90" cy="90" r="80" fill="#ffffff" stroke="#000000" stroke-width="6"/>
+  <text x="90" y="78" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-weight="600" font-size="42" letter-spacing="1" fill="#951e2a">ZOE</text>
+  <path d="M36 118 L72 118 L82 118 L90 94 L100 142 L108 118 L118 118 L144 118" fill="none" stroke="#951e2a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
