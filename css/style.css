@@ -13,7 +13,7 @@
 
 /* ------------------------------------------------------------
    1. DESIGN TOKENS
-   These are CSS variables — think of them as named constants.
+   CSS variables = named constants
    Change a value here and it updates everywhere on the site.
    ------------------------------------------------------------ */
 :root {

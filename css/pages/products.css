@@ -9,8 +9,7 @@
    The CSS lives in contact.css which is NOT loaded here —
    so we redeclare the exact same rules.
 
-   LEARNING NOTE: This is a case where a shared partial would
-   help. In a real project you'd extract .page-header into
+   Note: A shared partial would help. In future potentially extract .page-header into
    style.css so both pages can use it without duplication.
    For now, redeclaring keeps each CSS file self-contained
    and easy to read.
@@ -120,7 +119,7 @@
 
 /*
   .is-hidden is toggled by the filter JS.
-  We use opacity + scale instead of display:none so the
+  use opacity + scale instead of display:none so the
   transition animates smoothly — display:none can't animate.
   pointer-events:none prevents clicks on hidden cards.
 */

@@ -126,8 +126,7 @@
 /* TIMELINE
    Each <li> has a left border (the vertical line) and a dot
    created using the .timeline__marker div.
-   This avoids using ::before pseudo-elements which can confuse
-   beginners — the structure is explicit in the HTML.
+   avoids using ::before pseudo-elements — the structure is explicit in the HTML.
 */
 .timeline {
   /* eyebrow sits above the list */
