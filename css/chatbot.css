@@ -1,0 +1,376 @@
+/* ============================================================
+   CHATBOT.CSS — Zoe Medical floating support widget
+   Loaded on every page alongside style.css.
+   All classes are prefixed with .zoe- to avoid any conflict
+   with existing site styles.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   WIDGET CONTAINER
+   position: fixed keeps the widget anchored to the bottom-right
+   corner of the viewport regardless of scroll position.
+   z-index: 1000 ensures it floats above all page content.
+   ------------------------------------------------------------ */
+#zoe-chat {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+
+/* ------------------------------------------------------------
+   FAB ROW — button + label
+   ------------------------------------------------------------ */
+.zoe-fab-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.zoe-fab-label {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #042C53;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.zoe-fab {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #185FA5;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(24,95,165,0.35);
+  transition: opacity 0.15s, transform 0.15s;
+  padding: 0;
+}
+
+.zoe-fab:hover {
+  opacity: 0.90;
+  transform: scale(1.05);
+}
+
+.zoe-fab img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+
+/* ------------------------------------------------------------
+   CHAT PANEL
+   Hidden by default. .zoe-panel--open shows it with a
+   smooth slide-up animation.
+   ------------------------------------------------------------ */
+.zoe-panel {
+  width: 320px;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+
+  /* Hidden state */
+  opacity: 0;
+  transform: translateY(12px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.zoe-panel--open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+
+/* ------------------------------------------------------------
+   PANEL HEADER
+   ------------------------------------------------------------ */
+.zoe-panel-header {
+  background: #185FA5;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.zoe-header-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.zoe-header-text {
+  flex: 1;
+}
+
+.zoe-header-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.zoe-header-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+}
+
+.zoe-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+}
+
+.zoe-close-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.zoe-close-btn:hover {
+  color: #fff;
+}
+
+
+/* ------------------------------------------------------------
+   MESSAGES AREA
+   ------------------------------------------------------------ */
+.zoe-messages {
+  flex: 1;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: 260px;
+  background: #F9FAFB;
+  scroll-behavior: smooth;
+}
+
+.zoe-msg {
+  display: flex;
+  max-width: 85%;
+}
+
+.zoe-msg--bot {
+  align-self: flex-start;
+}
+
+.zoe-msg--user {
+  align-self: flex-end;
+}
+
+.zoe-bubble {
+  padding: 9px 13px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.zoe-msg--bot .zoe-bubble {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  color: #374151;
+  border-bottom-left-radius: 3px;
+}
+
+.zoe-msg--user .zoe-bubble {
+  background: #185FA5;
+  color: #fff;
+  border-bottom-right-radius: 3px;
+}
+
+
+/* ------------------------------------------------------------
+   TYPING INDICATOR
+   Three animated dots that pulse while waiting for a response.
+   ------------------------------------------------------------ */
+.zoe-typing .zoe-bubble {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+}
+
+.zoe-typing .zoe-bubble span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #9CA3AF;
+  animation: zoe-blink 1.2s infinite;
+}
+
+.zoe-typing .zoe-bubble span:nth-child(2) { animation-delay: 0.2s; }
+.zoe-typing .zoe-bubble span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes zoe-blink {
+  0%, 80%, 100% { opacity: 0.2; }
+  40%           { opacity: 1; }
+}
+
+
+/* ------------------------------------------------------------
+   SUGGESTED QUESTIONS
+   ------------------------------------------------------------ */
+.zoe-suggestions {
+  padding: 8px 14px;
+  border-top: 1px solid #E5E7EB;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.zoe-suggestions-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #9CA3AF;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.zoe-suggestions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.zoe-suggestion {
+  font-size: 11px;
+  font-family: inherit;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #E5E7EB;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.zoe-suggestion:hover {
+  border-color: #185FA5;
+  color: #185FA5;
+}
+
+
+/* ------------------------------------------------------------
+   INPUT ROW
+   ------------------------------------------------------------ */
+.zoe-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid #E5E7EB;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.zoe-input {
+  flex: 1;
+  border: 1px solid #E5E7EB;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-family: inherit;
+  background: #F9FAFB;
+  color: #374151;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.zoe-input:focus {
+  border-color: #185FA5;
+  background: #fff;
+}
+
+.zoe-send-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #185FA5;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.zoe-send-btn:hover {
+  opacity: 0.85;
+}
+
+
+/* ------------------------------------------------------------
+   DISCLAIMER
+   ------------------------------------------------------------ */
+.zoe-disclaimer {
+  padding: 6px 14px 10px;
+  font-size: 10px;
+  color: #9CA3AF;
+  text-align: center;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.zoe-disclaimer a {
+  color: #185FA5;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   MOBILE — shrink widget slightly on small screens
+   ------------------------------------------------------------ */
+@media (max-width: 480px) {
+  #zoe-chat {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .zoe-panel {
+    width: calc(100vw - 32px);
+  }
+
+  .zoe-fab-label {
+    display: none;
+  }
+}
