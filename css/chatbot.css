@@ -150,6 +150,24 @@
   flex-shrink: 0;
 }
 
+.zoe-header-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: color 0.15s, background 0.15s;
+}
+
+.zoe-header-close:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.15);
+}
+
 
 /* ------------------------------------------------------------
    MESSAGES AREA

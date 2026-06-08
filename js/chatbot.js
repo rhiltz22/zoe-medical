@@ -26,15 +26,7 @@ const WORKER_URL = "https://zoe-support-worker.rhiltz.workers.dev";
 const widgetHTML = `
 <div id="zoe-chat" aria-live="polite">
 
-  <!-- Floating action button (FAB) + label -->
-  <div class="zoe-fab-row" id="zoeFabRow">
-    <span class="zoe-fab-label" id="zoeFabLabel">Ask Zoe support</span>
-    <button class="zoe-fab" id="zoeFab" aria-label="Open support chat" onclick="zoeChatToggle()">
-      <img src="/zoe-medical/assets/images/zoe-logo.svg" alt="" width="44" height="44">
-    </button>
-  </div>
-
-  <!-- Chat panel -->
+  <!-- Chat panel (must come before FAB so the FAB stays anchored at bottom-right) -->
   <div class="zoe-panel" id="zoePanel" role="dialog" aria-label="Zoe Medical support chat" aria-hidden="true">
 
     <!-- Header -->
@@ -47,6 +39,7 @@ const widgetHTML = `
           Online — replies instantly
         </div>
       </div>
+      <button class="zoe-header-close" aria-label="Close chat" onclick="zoeChatToggle()">&#10005;</button>
     </div>
 
     <!-- Messages -->
@@ -93,6 +86,15 @@ const widgetHTML = `
     </div>
 
   </div>
+
+  <!-- Floating action button (FAB) + label — last in DOM so it stays at bottom of the fixed container -->
+  <div class="zoe-fab-row" id="zoeFabRow">
+    <span class="zoe-fab-label" id="zoeFabLabel">Ask Zoe support</span>
+    <button class="zoe-fab" id="zoeFab" aria-label="Open support chat" onclick="zoeChatToggle()">
+      <img src="/zoe-medical/assets/images/zoe-logo.svg" alt="" width="44" height="44">
+    </button>
+  </div>
+
 </div>
 `;
 
@@ -116,12 +118,12 @@ function zoeChatToggle() {
   if (isOpen) {
     panel.classList.remove("zoe-panel--open");
     panel.setAttribute("aria-hidden", "true");
-    label.textContent = "Ask Zoe support";
+    label.style.display = "";
     fab.setAttribute("aria-label", "Open support chat");
   } else {
     panel.classList.add("zoe-panel--open");
     panel.setAttribute("aria-hidden", "false");
-    label.textContent = "Close";
+    label.style.display = "none";
     fab.setAttribute("aria-label", "Close support chat");
     /* Focus the input when opening for keyboard users */
     setTimeout(function () {
