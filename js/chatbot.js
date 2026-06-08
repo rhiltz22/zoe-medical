@@ -47,7 +47,6 @@ const widgetHTML = `
           Online — replies instantly
         </div>
       </div>
-      <button class="zoe-close-btn" aria-label="Close chat" onclick="zoeChatToggle()">&#x2715;</button>
     </div>
 
     <!-- Messages -->

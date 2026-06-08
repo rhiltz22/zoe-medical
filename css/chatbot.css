@@ -36,12 +36,12 @@
 
 .zoe-fab-label {
   background: #fff;
-  border: 1px solid #E5E7EB;
+  border: 1px solid #f5d5d8;
   border-radius: 999px;
   padding: 6px 14px;
   font-size: 13px;
   font-weight: 500;
-  color: #042C53;
+  color: #83161f;
   white-space: nowrap;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
@@ -50,13 +50,13 @@
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  background: #185FA5;
+  background: #83161f;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(24,95,165,0.35);
+  box-shadow: 0 4px 12px rgba(131,22,31,0.35);
   transition: opacity 0.15s, transform 0.15s;
   padding: 0;
 }
@@ -107,7 +107,7 @@
    PANEL HEADER
    ------------------------------------------------------------ */
 .zoe-panel-header {
-  background: #185FA5;
+  background: #83161f;
   padding: 14px 16px;
   display: flex;
   align-items: center;
@@ -148,21 +148,6 @@
   border-radius: 50%;
   background: #4ade80;
   flex-shrink: 0;
-}
-
-.zoe-close-btn {
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.75);
-  font-size: 16px;
-  cursor: pointer;
-  padding: 4px;
-  line-height: 1;
-  transition: color 0.15s;
-}
-
-.zoe-close-btn:hover {
-  color: #fff;
 }
 
 
@@ -209,7 +194,7 @@
 }
 
 .zoe-msg--user .zoe-bubble {
-  background: #185FA5;
+  background: #83161f;
   color: #fff;
   border-bottom-right-radius: 3px;
 }
@@ -281,8 +266,8 @@
 }
 
 .zoe-suggestion:hover {
-  border-color: #185FA5;
-  color: #185FA5;
+  border-color: #83161f;
+  color: #83161f;
 }
 
 
@@ -313,7 +298,7 @@
 }
 
 .zoe-input:focus {
-  border-color: #185FA5;
+  border-color: #83161f;
   background: #fff;
 }
 
@@ -321,7 +306,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #185FA5;
+  background: #83161f;
   border: none;
   color: #fff;
   font-size: 14px;
@@ -351,7 +336,7 @@
 }
 
 .zoe-disclaimer a {
-  color: #185FA5;
+  color: #83161f;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
