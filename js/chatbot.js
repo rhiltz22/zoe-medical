@@ -26,19 +26,13 @@ const WORKER_URL = "https://zoe-support-worker.rhiltz.workers.dev";
 const widgetHTML = `
 <div id="zoe-chat" aria-live="polite">
 
-  <!-- Chat panel (must come before FAB so the FAB stays anchored at bottom-right) -->
+  <!-- Chat panel -->
   <div class="zoe-panel" id="zoePanel" role="dialog" aria-label="Zoe Medical support chat" aria-hidden="true">
 
     <!-- Header -->
     <div class="zoe-panel-header">
-      <img src="/zoe-medical/assets/images/zoe-logo.svg" alt="Zoe Medical" width="34" height="34" class="zoe-header-logo">
-      <div class="zoe-header-text">
-        <div class="zoe-header-name">Zoe Support</div>
-        <div class="zoe-header-status">
-          <span class="zoe-status-dot" aria-hidden="true"></span>
-          Online — replies instantly
-        </div>
-      </div>
+      <img src="/zoe-medical/assets/images/zoe-logo.svg" alt="Zoe Medical" width="30" height="30" class="zoe-header-logo">
+      <div class="zoe-header-name">Zoe Support</div>
       <button class="zoe-header-close" aria-label="Close chat" onclick="zoeChatToggle()">&#10005;</button>
     </div>
 
@@ -46,20 +40,9 @@ const widgetHTML = `
     <div class="zoe-messages" id="zoeMessages" aria-live="polite" aria-label="Chat messages">
       <div class="zoe-msg zoe-msg--bot">
         <div class="zoe-bubble">
-          Hi! I'm the Zoe Medical support assistant. I can help with setup,
-          settings, and questions about your monitor. What can I help you with?
+          Hi, I'm Zoe's support assistant. I can help with device setup, alarm settings,
+          SpO&#x2082; monitoring, battery questions, and service requests. How can I help you today?
         </div>
-      </div>
-    </div>
-
-    <!-- Suggested questions -->
-    <div class="zoe-suggestions">
-      <div class="zoe-suggestions-label">Suggested questions</div>
-      <div class="zoe-suggestions-row">
-        <button class="zoe-suggestion" onclick="zoeSendSuggestion(this)">Alarm limits</button>
-        <button class="zoe-suggestion" onclick="zoeSendSuggestion(this)">Battery life</button>
-        <button class="zoe-suggestion" onclick="zoeSendSuggestion(this)">Service request</button>
-        <button class="zoe-suggestion" onclick="zoeSendSuggestion(this)">SpO2 setup</button>
       </div>
     </div>
 
@@ -69,7 +52,7 @@ const widgetHTML = `
         class="zoe-input"
         id="zoeInput"
         type="text"
-        placeholder="Ask a question…"
+        placeholder="Ask anything…"
         aria-label="Type your support question"
         maxlength="500"
         onkeydown="if(event.key==='Enter')zoeSendMessage()"
@@ -87,7 +70,7 @@ const widgetHTML = `
 
   </div>
 
-  <!-- Floating action button (FAB) + label — last in DOM so it stays at bottom of the fixed container -->
+  <!-- Floating action button (FAB) + label -->
   <div class="zoe-fab-row" id="zoeFabRow">
     <span class="zoe-fab-label" id="zoeFabLabel">Ask Zoe support</span>
     <button class="zoe-fab" id="zoeFab" aria-label="Open support chat" onclick="zoeChatToggle()">
@@ -136,16 +119,7 @@ function zoeChatToggle() {
 
 
 /* ----------------------------------------------------------
-   3. SUGGESTED QUESTIONS
-   ---------------------------------------------------------- */
-function zoeSendSuggestion(btn) {
-  document.getElementById("zoeInput").value = btn.textContent;
-  zoeSendMessage();
-}
-
-
-/* ----------------------------------------------------------
-   4. SEND MESSAGE + CALL WORKER
+   3. SEND MESSAGE + CALL WORKER
    ---------------------------------------------------------- */
 async function zoeSendMessage() {
   const input = document.getElementById("zoeInput");
@@ -189,19 +163,30 @@ async function zoeSendMessage() {
 
 
 /* ----------------------------------------------------------
-   5. HELPER FUNCTIONS
+   4. HELPER FUNCTIONS
    ---------------------------------------------------------- */
+
+/* Convert basic markdown from the bot API into HTML.
+   Only used for bot messages — never for user input. */
+function zoeFormatBotText(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '$1')
+    .replace(/\n/g, '<br>');
+}
 
 /* Add a message bubble to the thread */
 function zoeAppendMessage(text, sender) {
   const messages = document.getElementById("zoeMessages");
   const div = document.createElement("div");
   div.className = "zoe-msg zoe-msg--" + sender;
-  /* Use textContent for user input to prevent XSS;
-     bot responses from our own API are safe to use as text too */
   const bubble = document.createElement("div");
   bubble.className = "zoe-bubble";
-  bubble.textContent = text;
+  if (sender === "bot") {
+    bubble.innerHTML = zoeFormatBotText(text);
+  } else {
+    bubble.textContent = text; /* textContent prevents XSS on user input */
+  }
   div.appendChild(bubble);
   messages.appendChild(div);
   zoeScrollToBottom();
