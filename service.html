@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--
+  service.html — Service & Repairs page
+  =====================================
+  Dedicated page for service / repair (RMA) requests, kept SEPARATE
+  from customer support (which lives on contact.html). Reuses the
+  form + two-column layout from contact.css and adds the RMA process
+  steps via service.css.
+
+  PAGE STRUCTURE:
+    1. <head>     — metadata, fonts, CSS links (contact.css + service.css)
+    2. <nav>      — identical to every other page
+    3. <main>
+       - .page-header     title + subtitle
+       - .contact-body    two columns:
+            left  → response banner + RMA request form + process steps
+            right → service department info + loaner/warranty note
+    4. <footer>   — identical to every other page
+    5. <script>   — mobile nav toggle + chatbot
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service &amp; Repairs — Zoe Medical</title>
+  <meta name="description" content="Request service or a repair for your Zoe Medical patient monitor. In-house RMA repairs in Topsfield, MA — typical turnaround under 5 business days. Loaner units available for the Nightingale PPM3.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Reuse the contact page form + layout styles, then layer on
+       the service-specific bits (RMA steps, loaner note). -->
+  <link rel="stylesheet" href="css/pages/contact.css">
+  <link rel="stylesheet" href="css/pages/service.css">
+  <link rel="stylesheet" href="css/chatbot.css">
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "203abe459a01455cbb949c95064dcb05"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV — identical across all pages
+       ============================================================ -->
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">
+      <img src="assets/images/zoe-logo.svg" alt="" width="36" height="36" aria-hidden="true">
+      Zoe Medical
+    </a>
+    <div class="nav__links">
+      <a href="products/index.html">Products</a>
+      <a href="design-services.html">Design services</a>
+      <a href="support.html" class="active">Support</a>
+      <a href="about.html">About</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="products/index.html">Products</a>
+    <a href="design-services.html">Design services</a>
+    <a href="support.html">Support</a>
+    <a href="about.html">About</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+  </div>
+
+
+  <main>
+
+    <!-- ----------------------------------------------------------
+         PAGE HEADER
+         ---------------------------------------------------------- -->
+    <div class="page-header">
+      <div class="container">
+        <span class="eyebrow">Support</span>
+        <h1 class="page-header__title">Service &amp; repairs</h1>
+        <p class="page-header__sub">
+          All service and repairs are handled in-house at our Topsfield, MA
+          facility by the same team that builds the monitors. Submit the form
+          below to start a repair — typical turnaround is under 5 business days.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         SERVICE BODY
+         Two-column layout (reuses .contact-body from contact.css):
+           Left  (wider)  — response banner, RMA form, process steps
+           Right (narrower) — service department info, loaner note
+         ---------------------------------------------------------- -->
+    <section class="contact-body">
+      <div class="container">
+        <div class="contact-body__inner">
+
+          <!-- ====================================================
+               LEFT COLUMN — form + process
+               ==================================================== -->
+          <div class="contact-body__main">
+
+            <!-- Turnaround banner -->
+            <div class="response-banner">
+              <i class="ti ti-clock" aria-hidden="true"></i>
+              <div>
+                <strong>Typical turnaround: under 5 business days</strong>
+                <span>We'll issue an RMA and shipping instructions after you submit. Repairs are warranted for 90 days.</span>
+              </div>
+            </div>
+
+
+            <!-- SERVICE / RMA REQUEST FORM
+                 Uses the same Formspree endpoint as the contact form.
+                 A hidden "reason" field tags these as service requests
+                 so they can be routed separately from sales/support. -->
+            <div class="form-card card">
+              <div class="form-card__header">
+                <i class="ti ti-tool" aria-hidden="true"></i>
+                <h2 class="form-card__title">Request service or a repair</h2>
+              </div>
+
+              <form class="contact-form" action="https://formspree.io/f/xgoqqzpl" method="POST">
+
+                <!-- Tag the submission as a service request -->
+                <input type="hidden" name="reason" value="service-request">
+                <input type="hidden" name="_subject" value="New service / repair request">
+
+                <div class="form-field">
+                  <label class="form-field__label" for="serial">Serial number</label>
+                  <input
+                    class="form-field__input"
+                    type="text"
+                    id="serial"
+                    name="serial_number"
+                    placeholder="e.g. 740S-0001234"
+                    required
+                  >
+                </div>
+
+                <div class="form-field">
+                  <label class="form-field__label" for="problem">Problem description</label>
+                  <textarea
+                    class="form-field__input form-field__textarea"
+                    id="problem"
+                    name="problem_description"
+                    placeholder="Describe the issue — what's happening, when it started, and any error messages or alarms."
+                    required
+                    rows="5"
+                  ></textarea>
+                </div>
+
+                <div class="form-field">
+                  <label class="form-field__label" for="ship-address">
+                    Shipping address <span class="form-field__optional">(include practice / company name)</span>
+                  </label>
+                  <textarea
+                    class="form-field__input form-field__textarea"
+                    id="ship-address"
+                    name="shipping_address"
+                    placeholder="Riverside EMS&#10;460 Boston Street&#10;Topsfield, MA 01983"
+                    required
+                    rows="3"
+                  ></textarea>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label class="form-field__label" for="contact-name">Contact name</label>
+                    <input
+                      class="form-field__input"
+                      type="text"
+                      id="contact-name"
+                      name="contact_name"
+                      placeholder="Jane Smith"
+                      required
+                      autocomplete="name"
+                    >
+                  </div>
+                  <div class="form-field">
+                    <label class="form-field__label" for="email">Email</label>
+                    <input
+                      class="form-field__input"
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="jane@clinic.org"
+                      required
+                      autocomplete="email"
+                    >
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label class="form-field__label" for="phone">Phone number</label>
+                    <input
+                      class="form-field__input"
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="(617) 555-0199"
+                      required
+                      autocomplete="tel"
+                    >
+                  </div>
+                  <div class="form-field">
+                    <label class="form-field__label" for="loaner">Loaner unit</label>
+                    <select class="form-field__input form-field__select" id="loaner" name="loaner">
+                      <option value="no">No — not needed</option>
+                      <option value="yes">Yes — please include a loaner</option>
+                    </select>
+                    <span class="form-field__help">
+                      Loaners are available for the Nightingale PPM3 only — $100 fee plus shipping &amp; handling.
+                    </span>
+                  </div>
+                </div>
+
+                <div class="form-footer">
+                  <button type="submit" class="btn btn--primary">
+                    <i class="ti ti-send" aria-hidden="true"></i>
+                    Submit service request
+                  </button>
+                  <span class="form-footer__privacy">
+                    <i class="ti ti-lock" aria-hidden="true"></i>
+                    We never share your information
+                  </span>
+                </div>
+
+              </form>
+            </div>
+
+
+            <!-- HOW IT WORKS — RMA process steps -->
+            <div class="process-card card">
+              <div class="form-card__header">
+                <i class="ti ti-list-numbers" aria-hidden="true"></i>
+                <h2 class="form-card__title">How the repair process works</h2>
+              </div>
+              <div class="process-card__body">
+                <p class="process-intro">
+                  Repairs are diagnosed and completed in-house. Here's what to expect
+                  after you submit the form above.
+                </p>
+                <ol class="service-steps">
+                  <li class="service-step">
+                    <span class="service-step__num">1</span>
+                    <span class="service-step__text">Submit this form with your serial number and a description of the problem.</span>
+                  </li>
+                  <li class="service-step">
+                    <span class="service-step__num">2</span>
+                    <span class="service-step__text">We'll issue a Return Material Authorization (RMA) and shipping instructions.</span>
+                  </li>
+                  <li class="service-step">
+                    <span class="service-step__num">3</span>
+                    <span class="service-step__text">Send the unit in — we diagnose, repair, and return it. For out-of-warranty repairs we provide a quotation before proceeding.</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+          </div><!-- end .contact-body__main -->
+
+
+          <!-- ====================================================
+               RIGHT COLUMN — service department + loaner note
+               ==================================================== -->
+          <aside class="contact-body__sidebar">
+
+            <!-- Service department contact -->
+            <div class="info-card card">
+              <div class="info-card__header">Service department</div>
+
+              <div class="info-item">
+                <i class="ti ti-phone" aria-hidden="true"></i>
+                <div>
+                  <div class="info-item__label">Service phone</div>
+                  <a href="tel:+19788871410" class="info-item__value">+1 (978) 887-1410</a>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <i class="ti ti-mail" aria-hidden="true"></i>
+                <div>
+                  <div class="info-item__label">Service email</div>
+                  <a href="mailto:customersupport@zoemedical.com" class="info-item__value">customersupport@zoemedical.com</a>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <i class="ti ti-map-pin" aria-hidden="true"></i>
+                <div>
+                  <div class="info-item__label">Ship repairs to</div>
+                  <address class="info-item__value">
+                    Zoe Medical — Service Dept.<br>
+                    460 Boston Street<br>Topsfield, MA 01983
+                  </address>
+                </div>
+              </div>
+
+              <div class="info-item info-item--last">
+                <i class="ti ti-clock" aria-hidden="true"></i>
+                <div>
+                  <div class="info-item__label">Hours</div>
+                  <div class="info-item__value">Mon–Fri, 8am–5pm ET</div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Loaner + warranty note -->
+            <div class="note-card card">
+              <div class="note-card__header">
+                <i class="ti ti-info-circle" aria-hidden="true"></i>
+                Loaners &amp; warranty
+              </div>
+              <div class="note-card__body">
+                <p>
+                  Loaner equipment is available for the <strong>Nightingale PPM3 only</strong>,
+                  subject to availability — a $100 fee plus shipping &amp; handling applies.
+                  Loaners must be returned within 10 business days of receiving your repaired unit.
+                </p>
+                <p>
+                  Not sure if your repair is covered? Review our
+                  <a href="terms.html">warranty terms</a>, or call and we'll check your
+                  coverage before you ship.
+                </p>
+                <p>
+                  Have a general question instead of a repair?
+                  <a href="contact.html?reason=support">Contact customer support</a>.
+                </p>
+              </div>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — identical to every other page
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Zoe Medical, Inc.</div>
+        <p class="footer__tagline">Patient monitoring systems designed, manufactured, and supported in the USA since 1996. Factory-direct pricing for clinicians who need reliable, proven technology.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Products</div>
+        <a href="products/index.html">EMS / vital signs</a>
+        <a href="products/nightingale-ppm3.html">Oral surgery</a>
+        <a href="products/nightingale-phm.html">Physician office</a>
+        <a href="products/nightingale-central.html">Central monitoring</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="about.html">About us</a>
+        <a href="design-services.html">Design services</a>
+        <a href="support.html">Support</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html">Terms &amp; conditions</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Support</div>
+        <a href="support.html#videos">Video tutorials</a>
+        <a href="service.html">Service requests</a>
+        <a href="support.html#service">Manuals</a>
+        <a href="support.html#service">Warranty info</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 Zoe Medical, Incorporated. All rights reserved.</div>
+      <div class="footer__flag">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        Proudly made in Topsfield, MA
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — mobile nav toggle
+       ============================================================ -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('is-open');
+      const isOpen = mobileNav.classList.contains('is-open');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  </script>
+
+  <script src="js/chatbot.js"></script>
+</body>
+</html>
