@@ -17,6 +17,12 @@
   align-items: flex-end;
   gap: 12px;
   font-family: 'DM Sans', system-ui, sans-serif;
+  /* The hidden panel still reserves its full box inside this fixed
+     container, so without this the empty area would intercept clicks
+     over whatever sits behind it (e.g. the footer's Support column).
+     Ignore pointer events here and re-enable them only on the actual
+     interactive pieces below. */
+  pointer-events: none;
 }
 
 
@@ -27,6 +33,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  pointer-events: auto;   /* re-enable clicks (container is none) */
 }
 
 .zoe-fab-label {
