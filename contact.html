@@ -331,16 +331,18 @@
               <div class="info-card__header">Our location</div>
 
               <!--
-                Google Maps embed — replace the src with your actual embed URL.
-                To get one: Google Maps → search the address → Share →
-                Embed a map → copy the iframe src URL.
-                The iframe below uses a placeholder src.
+                Google Maps embed — no API key needed (output=embed).
+                To swap in Google's "official" embed instead: Google Maps →
+                search the address → Share → Embed a map → copy that <iframe>
+                and replace this one (keep class="contact-map").
               -->
-              <div class="map-placeholder" aria-label="Map of Zoe Medical location">
-                <i class="ti ti-map-pin" aria-hidden="true"></i>
-                <span>Google Maps embed goes here</span>
-                <code>&#x3C;iframe src="maps.google.com/embed?..."&#x3E;</code>
-              </div>
+              <iframe
+                class="contact-map"
+                title="Map showing Zoe Medical, 460 Boston Street, Topsfield, MA 01983"
+                src="https://maps.google.com/maps?q=42.66313,-70.93045&z=16&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen></iframe>
 
               <div class="info-item">
                 <i class="ti ti-map-pin" aria-hidden="true"></i>

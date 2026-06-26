@@ -355,7 +355,18 @@
   color: var(--color-text-heading);
 }
 
-/* Map placeholder — swap this <div> for a real <iframe> */
+/* Google Maps embed */
+.contact-map {
+  display: block;
+  width: calc(100% - var(--space-md) * 2);
+  height: 200px;
+  margin: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+/* Map placeholder — legacy fallback (kept in case the iframe is swapped
+   back out for a static placeholder during development) */
 .map-placeholder {
   background: var(--color-bg-blue);
   height: 130px;
