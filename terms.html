@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!--
+  terms.html — Terms and Conditions of Sale
+  ==========================================
+  Long-form legal page. Same shell as every other interior page:
+    1. <head>     — metadata, fonts, CSS links (+ terms.css)
+    2. <nav>      — identical to every other page
+    3. <main>
+       - .page-header   blue title band
+       - .legal         numbered clauses in a readable column
+    4. <footer>   — identical to every other page
+    5. <script>   — mobile nav toggle + chatbot
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions of Sale — Zoe Medical</title>
+  <meta name="description" content="Zoe Medical's Terms and Conditions of Sale — order acceptance, pricing, warranty, repairs, returns, limitation of liability, and governing law.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages/terms.css">
+  <link rel="stylesheet" href="css/chatbot.css">
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "203abe459a01455cbb949c95064dcb05"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">
+      <img src="assets/images/zoe-logo.svg" alt="" width="36" height="36" aria-hidden="true">
+      Zoe Medical
+    </a>
+    <div class="nav__links">
+      <a href="products/index.html">Products</a>
+      <a href="design-services.html">Design services</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+      <a href="terms.html" class="active">Terms</a>
+    </div>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="products/index.html">Products</a>
+    <a href="design-services.html">Design services</a>
+    <a href="support.html">Support</a>
+    <a href="about.html">About</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html" class="nav__cta">Request a quote</a>
+  </div>
+
+
+  <main>
+
+    <!-- ----------------------------------------------------------
+         PAGE HEADER
+         ---------------------------------------------------------- -->
+    <div class="page-header">
+      <div class="container">
+        <span class="eyebrow">Legal</span>
+        <h1 class="page-header__title">Terms and Conditions of Sale</h1>
+        <p class="page-header__sub">
+          The terms below govern the sale of products and services by Zoe Medical, Inc.
+          ("Company"). Please review them carefully before placing an order.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         LEGAL DOCUMENT
+         ---------------------------------------------------------- -->
+    <section class="legal">
+      <div class="container">
+
+        <p class="legal__updated">Last updated: June 2026</p>
+
+        <!-- 1 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">1. Acceptance of Orders</h2>
+          <p>All orders are subject to acceptance by Company. Prices and delivery lead times are subject to change without notice until an order is accepted.</p>
+          <p>Customer purchase order terms that conflict with these Terms and Conditions shall not apply unless agreed to in writing by Company.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">2. Pricing and Payment</h2>
+          <p>Prices are stated in U.S. dollars unless otherwise specified.</p>
+          <p>Payment terms are net 30 days from invoice date unless otherwise agreed in writing.</p>
+          <p>Company reserves the right to suspend shipments or services for overdue accounts.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">3. Shipping and Delivery</h2>
+          <p>Shipping dates are estimates only and are not guaranteed.</p>
+          <p>Risk of loss and title transfer to Customer occurs upon delivery to the carrier.</p>
+          <p>Customer shall inspect products upon receipt and notify Company of any shipping damage or shortages within ten (10) business days.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">4. Limited Product Warranty</h2>
+          <p>Company warrants that its products will be free from defects in materials and workmanship under normal use and service for a period of two (2) years from the date of shipment, unless otherwise specified. Most accessories and consumables hold a shorter warranty, 90 days unless otherwise specified.</p>
+          <p>If a product fails during the warranty period, Company will, at its discretion:</p>
+          <ul class="legal-list">
+            <li>Repair the product;</li>
+            <li>Replace the product with an equivalent product; or</li>
+            <li>Refund the original purchase price.</li>
+          </ul>
+          <p>This warranty is Customer's exclusive remedy.</p>
+          <p>The warranty does not cover damage resulting from:</p>
+          <ul class="legal-list">
+            <li>Misuse or abuse;</li>
+            <li>Off-label use;</li>
+            <li>Unauthorized repairs or modifications;</li>
+            <li>Improper installation or operation;</li>
+            <li>Accidents, neglect, or acts of nature;</li>
+            <li>Normal wear and tear.</li>
+          </ul>
+          <p>Replacement parts or repaired products are covered for the remainder of the original warranty period or ninety (90) days, whichever is longer.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">5. Off-Label Use</h2>
+          <p>Customer acknowledges that the product must be used only in accordance with its labeling, instructions for use, and applicable regulatory requirements. Company shall not be responsible for any injury, damage, or performance issues resulting from use inconsistent with the product's intended use or instructions.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">6. Repair Service</h2>
+          <p>Products requiring repair must be returned with a Return Material Authorization (RMA) issued by Company.</p>
+          <p>Customer is responsible for shipping products to Company unless otherwise agreed. Company will pay return shipping for warranty repairs.</p>
+          <p>For out-of-warranty repairs, Company will provide a repair quotation when practical before proceeding.</p>
+          <p>Repair work is warranted for ninety (90) days against recurrence of the same failure.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">7. Loaner Equipment</h2>
+          <p>For certain products and subject to availability, Company may provide loaner equipment while Customer's product is being repaired at Company's facility.</p>
+          <p>Loaner equipment remains the property of Company and must be returned within ten (10) business days after Customer receives its repaired or replacement product.</p>
+          <p>Customer is responsible for reasonable care of loaner equipment and for loss or damage beyond normal wear and tear.</p>
+          <p>Company does not guarantee the availability of loaner equipment.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">8. Returns</h2>
+          <p>Products may not be returned without prior authorization from Company.</p>
+          <p>Authorized returns may be subject to inspection and restocking charges.</p>
+          <p>Custom, special-order, or discontinued products are generally not eligible for return.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">9. Limitation of Liability</h2>
+          <p>To the maximum extent permitted by law, Company's total liability arising from any product, service, or transaction shall not exceed the amount paid by Customer for the affected product.</p>
+          <p>Company shall not be liable for any indirect, incidental, consequential, special, or punitive damages, including lost profits, lost revenue, loss of data, or business interruption.</p>
+        </div>
+
+        <!-- 10 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">10. Force Majeure</h2>
+          <p>Company shall not be liable for delays or failure to perform caused by circumstances beyond its reasonable control, including natural disasters, labor disputes, transportation disruptions, governmental actions, or supply chain interruptions.</p>
+        </div>
+
+        <!-- 11 -->
+        <div class="legal-clause">
+          <h2 class="legal-clause__title">11. Governing Law</h2>
+          <p>These Terms and Conditions shall be governed by the laws of the State of Massachusetts, without regard to conflict-of-law principles.</p>
+          <p>Any dispute arising under these Terms shall be resolved in the state or federal courts located in Essex County, Massachusetts, and the parties consent to the jurisdiction of those courts.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Zoe Medical, Inc.</div>
+        <p class="footer__tagline">Patient monitoring systems designed, manufactured, and supported in the USA since 1996. Factory-direct pricing for clinicians who need reliable, proven technology.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Products</div>
+        <a href="products/index.html">EMS / vital signs</a>
+        <a href="products/nightingale-ppm3.html">Oral surgery</a>
+        <a href="products/nightingale-phm.html">Physician office</a>
+        <a href="products/nightingale-central.html">Central monitoring</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="about.html">About us</a>
+        <a href="design-services.html">Design services</a>
+        <a href="support.html">Support</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html">Terms &amp; conditions</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Support</div>
+        <a href="support.html#videos">Video tutorials</a>
+        <a href="support.html#service">Service requests</a>
+        <a href="support.html#service">Manuals</a>
+        <a href="support.html#service">Warranty info</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 Zoe Medical, Incorporated. All rights reserved.</div>
+      <div class="footer__flag">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        Proudly made in Topsfield, MA
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — mobile nav toggle
+       ============================================================ -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('is-open');
+      const isOpen = mobileNav.classList.contains('is-open');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  </script>
+
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

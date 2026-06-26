@@ -1,0 +1,123 @@
+/* ============================================================
+   terms.css — Terms & Conditions page
+   ============================================================
+   Loaded only by terms.html. Reuses the shared .page-header
+   pattern (blue band) from the other interior pages, then adds
+   a clean, readable legal-document layout below it.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   PAGE HEADER — identical pattern to support/contact/products
+   ------------------------------------------------------------ */
+.page-header {
+  background: var(--color-bg-blue);
+  border-bottom: 1px solid var(--color-border-blue);
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.page-header__title {
+  font-size: var(--text-2xl);
+  color: var(--color-text-heading);
+  margin: var(--space-xs) 0 var(--space-xs);
+}
+
+.page-header__sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+
+/* ------------------------------------------------------------
+   LEGAL DOCUMENT BODY
+   A narrow, readable column for long-form legal copy.
+   ------------------------------------------------------------ */
+.legal {
+  background: var(--color-bg-white);
+  padding: var(--space-xl) 0;
+}
+
+/* Narrower than the default container for comfortable reading */
+.legal .container {
+  max-width: 820px;
+}
+
+/* "Last updated" line above the first clause */
+.legal__updated {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+/* Each numbered clause */
+.legal-clause {
+  margin-bottom: var(--space-lg);
+}
+
+.legal-clause__title {
+  font-size: var(--text-xl);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-sm);
+}
+
+.legal-clause__sub {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin: var(--space-md) 0 var(--space-xs);
+}
+
+.legal-clause p {
+  font-size: var(--text-base);
+  color: var(--color-text-body);
+  line-height: 1.8;
+  margin-bottom: var(--space-sm);
+}
+
+.legal-clause p:last-child {
+  margin-bottom: 0;
+}
+
+/* Bulleted lists inside a clause */
+.legal-list {
+  list-style: none;
+  margin: 0 0 var(--space-sm);
+  padding: 0;
+}
+
+.legal-list li {
+  position: relative;
+  font-size: var(--text-base);
+  color: var(--color-text-body);
+  line-height: 1.8;
+  padding-left: var(--space-md);
+  margin-bottom: 4px;
+}
+
+/* Custom red bullet to match the brand palette */
+.legal-list li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width: 640px) {
+  .legal {
+    padding: var(--space-lg) 0;
+  }
+
+  .legal-clause__title {
+    font-size: var(--text-lg);
+  }
+}
