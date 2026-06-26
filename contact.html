@@ -111,11 +111,10 @@
 
 
             <!-- CONTACT FORM
-                 action="#" means it reloads the page on submit for now.
-                 To make it live, replace action="#" with a Formspree URL:
-                   action="https://formspree.io/f/YOUR_FORM_ID" (https://formspree.io/f/xgoqqzpl for this proj test.)
-                 Formspree is free for up to 50 submissions/month and
-                 requires no backend code (subject to change)
+                 Submits to the zoe-form-worker Cloudflare Worker, which
+                 emails it to customersupport@zoemedical.com (see email-worker/).
+                 js/forms.js handles the submit + inline success message;
+                 update the action URL if your deployed Worker URL differs.
             -->
             <div class="form-card card">
               <div class="form-card__header">
@@ -123,7 +122,12 @@
                 <h2 class="form-card__title">Send us a message</h2>
               </div>
 
-              <form class="contact-form" action="https://formspree.io/f/xgoqqzpl" method="POST" >
+              <form class="contact-form" data-email-form action="https://zoe-form-worker.rhiltz.workers.dev" method="POST">
+
+                <!-- Honeypot: hidden from humans, catches bots -->
+                <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;">
+                  <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+                </div>
 
                 <!-- Two fields side by side using CSS grid -->
                 <div class="form-row">
@@ -472,6 +476,7 @@
     });
   </script>
 
+  <script src="js/forms.js"></script>
   <script src="js/chatbot.js"></script>
 </body>
 </html>

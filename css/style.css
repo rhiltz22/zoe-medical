@@ -463,6 +463,56 @@ p {
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--space-md); }
 .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--space-md); }
 
+/* ------------------------------------------------------------
+   FORM SUBMISSION FEEDBACK
+   Used by js/forms.js. The success box replaces the form; the
+   error box is inserted at the top of the form. Colors are
+   readable on both light and colored section backgrounds.
+   ------------------------------------------------------------ */
+.form-success {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  background: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.form-success i {
+  font-size: 24px;
+  color: var(--color-success-text);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.form-success strong {
+  display: block;
+  color: var(--color-success-text);
+  font-size: var(--text-base);
+  margin-bottom: 2px;
+}
+
+.form-success span {
+  display: block;
+  color: var(--color-success-text);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.form-status {
+  font-size: var(--text-sm);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: var(--space-sm);
+}
+
+.form-status--error {
+  background: #FEE2E2;
+  border: 1px solid #FCA5A5;
+  color: #991B1B;
+}
+
 
 /* ------------------------------------------------------------
    7. RESPONSIVE BREAKPOINTS

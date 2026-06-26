@@ -1,0 +1,25 @@
+{
+  // Cloudflare Worker that emails website form submissions to
+  // customersupport@zoemedical.com via the Email Sending binding.
+  "name": "zoe-form-worker",
+  "main": "src/index.js",
+  "compatibility_date": "2026-06-01",
+
+  // Email Sending binding. No API keys needed — the binding sends on
+  // behalf of an onboarded domain. The "from" domain in src/index.js
+  // (zoemedical.com) must be onboarded first:
+  //   npx wrangler email sending enable zoemedical.com
+  //
+  // The optional "destination_address" restricts who this binding may
+  // email — we only ever send to customer support, so locking it down
+  // is good defense. Remove the line if you hit E_RECIPIENT_NOT_ALLOWED
+  // during setup and re-add once the address is confirmed.
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "destination_address": "customersupport@zoemedical.com"
+    }
+  ],
+
+  "observability": { "enabled": true }
+}

@@ -124,11 +124,18 @@
                 <h2 class="form-card__title">Request service or a repair</h2>
               </div>
 
-              <form class="contact-form" action="https://formspree.io/f/xgoqqzpl" method="POST">
+              <!-- Submits to the zoe-form-worker Cloudflare Worker, which
+                   emails it to customersupport@zoemedical.com (see email-worker/).
+                   Update the action URL if your deployed Worker URL differs. -->
+              <form class="contact-form" data-email-form action="https://zoe-form-worker.rhiltz.workers.dev" method="POST">
 
                 <!-- Tag the submission as a service request -->
                 <input type="hidden" name="reason" value="service-request">
-                <input type="hidden" name="_subject" value="New service / repair request">
+
+                <!-- Honeypot: hidden from humans, catches bots -->
+                <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;">
+                  <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+                </div>
 
                 <div class="form-field">
                   <label class="form-field__label" for="serial">Serial number</label>
@@ -405,6 +412,7 @@
     });
   </script>
 
+  <script src="js/forms.js"></script>
   <script src="js/chatbot.js"></script>
 </body>
 </html>

@@ -340,11 +340,16 @@
             <p class="contact-strip__sub">We respond within one business day. No automated runaround — you'll hear from a real person in Topsfield.</p>
 
             <!--
-              NOTE: This form does NOT submit anywhere yet.
-              action="#" just reloads the page.  
-              !--UPDATE (filled w https://formspree.io/f/xgoqqzpl)--!
+              Submits to the zoe-form-worker Cloudflare Worker, which
+              emails it to customersupport@zoemedical.com (see email-worker/).
+              Update the action URL if your deployed Worker URL differs.
             -->
-            <form class="contact-form" action="https://formspree.io/f/xgoqqzpl" method="POST">
+            <form class="contact-form" data-email-form action="https://zoe-form-worker.rhiltz.workers.dev" method="POST">
+              <input type="hidden" name="reason" value="general">
+              <!-- Honeypot: hidden from humans, catches bots -->
+              <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;">
+                <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+              </div>
               <input class="contact-form__input" type="text"  name="name"  placeholder="Your name"            required>
               <input class="contact-form__input" type="email" name="email" placeholder="Email address"        required>
               <input class="contact-form__input" type="text"  name="org"   placeholder="Organization / practice">
@@ -467,6 +472,7 @@
     });
   </script>
 
+  <script src="js/forms.js"></script>
   <script src="js/chatbot.js"></script>
 </body>
 </html>
