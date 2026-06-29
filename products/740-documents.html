@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!--
+  740-documents.html — 740SELECT support document library
+  =======================================================
+  Linked from the Downloads block on 740select.html
+  ("Other documents"). Lists every supplementary 740SELECT
+  PDF, grouped into categories. All files live in
+  /manuals/740 docs/.
+
+  PAGE STRUCTURE:
+    1. <head>     — metadata, fonts, CSS links
+    2. <nav>      — identical to every other product page (../ prefix)
+    3. <main>
+       - .breadcrumb   Home > Products > 740SELECT > Documents
+       - .page-header  title + subtitle
+       - .docs-body    grid of category cards, each holding doc rows
+    4. <footer>   — identical to 740select.html
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>740SELECT Documents — Zoe Medical</title>
+  <meta name="description" content="Download supplementary documentation for the Zoe Medical 740SELECT patient monitor — user manual addendums, capnography guides, temperature accessory guides, and ordering guides.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+
+  <!-- Note the ../ prefix — this file is inside /products/ so we go up one level -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages/documents.css">
+  <link rel="stylesheet" href="../css/chatbot.css">
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "203abe459a01455cbb949c95064dcb05"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV — same as every page, only the hrefs change (../ prefix)
+       ============================================================ -->
+  <nav class="nav">
+    <a href="../index.html" class="nav__logo">
+      <img src="../assets/images/zoe-logo.svg" alt="" width="36" height="36" aria-hidden="true">
+      Zoe Medical</a>
+    <div class="nav__links">
+      <a href="index.html" class="active">Products</a>
+      <a href="../design-services.html">Design services</a>
+      <a href="../support.html">Support</a>
+      <a href="../about.html">About</a>
+      <a href="../terms.html">Terms</a>
+    </div>
+    <a href="../contact.html" class="nav__cta">Request a quote</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="index.html">Products</a>
+    <a href="../design-services.html">Design services</a>
+    <a href="../support.html">Support</a>
+    <a href="../about.html">About</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html" class="nav__cta">Request a quote</a>
+  </div>
+
+
+  <main>
+
+    <!-- ----------------------------------------------------------
+         BREADCRUMB — Home > Products > 740SELECT > Documents
+         ---------------------------------------------------------- -->
+    <div class="breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb__list">
+          <li><a href="../index.html">Home</a></li>
+          <li aria-hidden="true">›</li>
+          <li><a href="index.html">Products</a></li>
+          <li aria-hidden="true">›</li>
+          <li><a href="740select.html">740SELECT</a></li>
+          <li aria-hidden="true">›</li>
+          <li aria-current="page">Documents</li>
+        </ol>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         PAGE HEADER
+         ---------------------------------------------------------- -->
+    <div class="page-header">
+      <div class="container">
+        <span class="eyebrow">740SELECT</span>
+        <h1 class="page-header__title">Documents &amp; guides</h1>
+        <p class="page-header__sub">
+          Supplementary documentation for the 740SELECT patient monitor —
+          user manual addendums, capnography and temperature accessory guides,
+          and accessory ordering guides. Looking for the main user manual or
+          brochure? They're on the <a href="740select.html">product page</a>.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------------------------------
+         DOCUMENTS BODY
+         Each category is a .card containing a header + doc rows.
+         Every link points to a PDF in /manuals/740 docs/.
+         ---------------------------------------------------------- -->
+    <section class="docs-body">
+      <div class="container">
+        <div class="docs-grid">
+
+          <!-- ===== User manual addendums ===== -->
+          <div class="docs-cat card">
+            <div class="docs-cat__header">
+              <i class="ti ti-book-2" aria-hidden="true"></i>
+              <h2 class="docs-cat__title">User manual addendums</h2>
+            </div>
+
+            <a href="../manuals/740 docs/740SELECT - User Manual Addendum - CO2 Parameters.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                CO2 parameters
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - User Manual Addendum - ECG and Resp Parameters.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                ECG &amp; respiration parameters
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - User Manual Addendum - Exergen Temperature.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Exergen temperature
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - User Manual Addendum - Masimo Rainbow Parameters.pdf" class="doc-item doc-item--last">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Masimo Rainbow parameters
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+          </div>
+
+
+          <!-- ===== Capnography & CO2 ===== -->
+          <div class="docs-cat card">
+            <div class="docs-cat__header">
+              <i class="ti ti-lungs" aria-hidden="true"></i>
+              <h2 class="docs-cat__title">Capnography &amp; CO2</h2>
+            </div>
+
+            <a href="../manuals/740 docs/740SELECT - etCO2.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                etCO2 overview
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - Covidien Microstream Micropod.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Covidien Microstream Micropod
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - Covidien CO2 Accessories Ordering Guide.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Covidien CO2 accessories ordering guide
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - Masimo IRMA CO2.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Masimo IRMA CO2
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - Masimo ISA CO2.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Masimo ISA CO2
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - Masimo CO2 Accessories Ordering Guide.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Masimo CO2 accessories ordering guide
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - Nomoline Adapter Sampling Line.pdf" class="doc-item doc-item--last">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Nomoline adapter &amp; sampling line
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+          </div>
+
+
+          <!-- ===== Temperature ===== -->
+          <div class="docs-cat card">
+            <div class="docs-cat__header">
+              <i class="ti ti-temperature" aria-hidden="true"></i>
+              <h2 class="docs-cat__title">Temperature</h2>
+            </div>
+
+            <a href="../manuals/740 docs/740SELECT - Exergen Temporal Scanner.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Exergen Temporal Scanner
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - Exergen Quick Set-Up Guide.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Exergen quick set-up guide
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - Exergen Clinical and Cost Benefits.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Exergen clinical &amp; cost benefits
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - Filac Quick Set-Up Guide.pdf" class="doc-item doc-item--last">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Filac quick set-up guide
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+          </div>
+
+
+          <!-- ===== Ordering guides & general ===== -->
+          <div class="docs-cat card">
+            <div class="docs-cat__header">
+              <i class="ti ti-clipboard-list" aria-hidden="true"></i>
+              <h2 class="docs-cat__title">Ordering guides &amp; general</h2>
+            </div>
+
+            <a href="../manuals/740 docs/740SELECT - EMS.pdf" class="doc-item">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                EMS overview
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+
+            <a href="../manuals/740 docs/740SELECT - Monitor Accessories Solutions Ordering Guide.pdf" class="doc-item doc-item--last">
+              <span class="doc-item__name">
+                <i class="ti ti-file-type-pdf" aria-hidden="true"></i>
+                Monitor accessories solutions ordering guide
+              </span>
+              <i class="ti ti-download doc-item__dl" aria-hidden="true"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — identical to 740select.html
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Zoe Medical, Inc.</div>
+        <p class="footer__tagline">Patient monitoring systems designed, manufactured, and supported in the USA since 1996. Factory-direct pricing for clinicians who need reliable, proven technology.</p>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Products</div>
+        <a href="index.html">EMS / vital signs</a>
+        <a href="nightingale-ppm3.html">Oral surgery</a>
+        <a href="nightingale-phm.html">Physician office</a>
+        <a href="nightingale-central.html">Central monitoring</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Company</div>
+        <a href="../about.html">About us</a>
+        <a href="../design-services.html">Design services</a>
+        <a href="../support.html">Support</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../terms.html">Terms &amp; conditions</a>
+      </div>
+      <div class="footer__col">
+        <div class="footer__col-title">Support</div>
+        <a href="../support.html#videos">Video tutorials</a>
+        <a href="../service.html">Service requests</a>
+        <a href="../support.html#service">Manuals</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__copy">&copy; 2026 Zoe Medical, Incorporated. All rights reserved.</div>
+      <div class="footer__flag">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        Proudly made in Topsfield, MA
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('is-open');
+      const isOpen = mobileNav.classList.contains('is-open');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+      });
+    });
+  </script>
+
+  <script src="../js/chatbot.js"></script>
+</body>
+</html>

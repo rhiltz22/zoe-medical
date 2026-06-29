@@ -1,0 +1,167 @@
+/* ============================================================
+   documents.css
+   Loaded only by products/740-documents.html.
+   A simple library page that lists every 740SELECT support
+   document, grouped into categories. Reuses the shared
+   .page-header (red band) and .card patterns, plus the
+   .doc-item row styling first introduced on the support page.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   BREADCRUMB — same pattern as the product pages
+   (redeclared here so this page doesn't need product.css)
+   ------------------------------------------------------------ */
+.breadcrumb {
+  background: var(--color-bg-light);
+  border-bottom: 1px solid var(--color-border);
+  padding: 12px 0;
+}
+
+.breadcrumb__list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.breadcrumb__list li {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.breadcrumb__list a {
+  color: var(--color-primary);
+  transition: opacity 0.15s;
+}
+
+.breadcrumb__list a:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.breadcrumb__list [aria-current="page"] {
+  color: var(--color-text-body);
+  font-weight: 500;
+}
+
+
+/* ------------------------------------------------------------
+   PAGE HEADER — identical pattern to contact/support/terms
+   ------------------------------------------------------------ */
+.page-header {
+  background: var(--color-bg-blue);
+  border-bottom: 1px solid var(--color-border-blue);
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.page-header__title {
+  font-size: var(--text-2xl);
+  color: var(--color-text-heading);
+  margin: var(--space-xs) 0 var(--space-xs);
+}
+
+.page-header__sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+
+/* ------------------------------------------------------------
+   DOCUMENTS BODY
+   Light background, cards arranged in a responsive grid.
+   ------------------------------------------------------------ */
+.docs-body {
+  padding: var(--space-lg) 0 var(--space-xl);
+  background: var(--color-bg-light);
+}
+
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  align-items: start;
+}
+
+/* Each category lives in its own card */
+.docs-cat__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-primary-light);
+}
+
+.docs-cat__header i {
+  font-size: 20px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.docs-cat__title {
+  font-size: var(--text-base);
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+
+/* ------------------------------------------------------------
+   DOC ITEM — single downloadable row
+   Same visual language as the support page doc list.
+   ------------------------------------------------------------ */
+.doc-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 12px var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.doc-item:hover {
+  background: var(--color-bg-white);
+}
+
+.doc-item--last {
+  border-bottom: none;
+}
+
+.doc-item__name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-sm);
+  color: var(--color-text-body);
+}
+
+.doc-item__name i {
+  font-size: 18px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.doc-item__dl {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.doc-item:hover .doc-item__dl {
+  color: var(--color-primary);
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSIVE — stack the category cards on narrow screens
+   ------------------------------------------------------------ */
+@media (max-width: 720px) {
+  .docs-grid {
+    grid-template-columns: 1fr;
+  }
+}
