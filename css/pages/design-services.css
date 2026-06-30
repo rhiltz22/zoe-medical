@@ -81,6 +81,21 @@
   color: var(--color-text-muted);
 }
 
+/* Real photos in the intro image stack */
+.ds-intro__img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border: 1px solid var(--color-border-blue);
+  border-radius: var(--radius-md);
+}
+
+/* Taller slot — reveals more of the board rack */
+.ds-intro__img--tall {
+  height: 320px;
+}
+
 
 /* ------------------------------------------------------------
    CAPABILITIES GRID
