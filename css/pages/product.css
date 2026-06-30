@@ -77,17 +77,33 @@
   gap: var(--space-sm);
 }
 
-/* Main product image — placeholder until real photos exist */
+/* Main product image — placeholder card, or a real photo on a clean white card */
 .product-hero__main-img {
   background: var(--color-bg-white);
   border: 1px solid var(--color-border-blue);
   border-radius: var(--radius-md);
-  height: 240px;
+  height: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  box-shadow: 0 6px 20px rgba(13, 27, 20, 0.08);   /* subtle lift off the pink section */
+}
+
+/* Photo variant of the card — holds a real product photo as an inner <img>.
+   The card keeps its fixed size; the photo inside can scale/shift on its own. */
+.product-hero__main-img--photo {
+  overflow: hidden;            /* clip the enlarged photo to the rounded card */
+  padding: 0;
+}
+
+.product-hero__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* a touch larger than "contain" and nudged slightly right so the monitor sits centered */
+  transform: translateX(2%) scale(1.2);
 }
 
 .product-hero__main-img i {
