@@ -95,27 +95,21 @@
           <div class="product-hero__images">
 
             <!-- Main image display -->
-            <!--
-              Replace this placeholder div with a real <img> when you have photos:
-              <img src="../assets/images/740select-front.jpg"
-                   alt="740SELECT patient monitor, front view"
-                   class="product-hero__main-img">
-            -->
-            <div class="product-hero__main-img" aria-label="740SELECT product image placeholder">
-              <i class="ti ti-device-heart-monitor" aria-hidden="true"></i>
-              <span>Product photography</span>
+            <div class="product-hero__main-img product-hero__main-img--photo">
+              <img src="../assets/images/740SelectTemps_1.png"
+                   alt="740SELECT patient monitor"
+                   class="product-hero__photo" id="heroMainImg">
             </div>
 
-            <!-- Thumbnail strip — clicking each would swap the main image (JS needed for that later) -->
+            <!-- Thumbnail strip — clicking a thumb swaps the main image (see script below) -->
             <div class="product-hero__thumbs">
-              <button class="product-hero__thumb is-active" aria-label="Front view">
-                <i class="ti ti-device-heart-monitor" aria-hidden="true"></i>
+              <button class="product-hero__thumb is-active" aria-label="View 1"
+                      data-full="../assets/images/740SelectTemps_1.png" data-scale="0.84">
+                <img src="../assets/images/740SelectTemps_1.png" alt="" class="product-hero__thumb-img">
               </button>
-              <button class="product-hero__thumb" aria-label="Side view">
-                <i class="ti ti-rotate-360" aria-hidden="true"></i>
-              </button>
-              <button class="product-hero__thumb" aria-label="In use">
-                <i class="ti ti-ambulance" aria-hidden="true"></i>
+              <button class="product-hero__thumb" aria-label="View 2"
+                      data-full="../assets/images/740SelectTemps_2.png" data-scale="1.08">
+                <img src="../assets/images/740SelectTemps_2.png" alt="" class="product-hero__thumb-img">
               </button>
             </div>
 
@@ -410,6 +404,26 @@
         mobileNav.classList.remove('is-open');
       });
     });
+
+    // Thumbnail strip — swap the main hero image (and its per-photo zoom) on click
+    const heroMainImg = document.getElementById('heroMainImg');
+    const heroThumbs = document.querySelectorAll('.product-hero__thumb');
+    function applyHeroImage(thumb) {
+      const full = thumb.getAttribute('data-full');
+      const scale = thumb.getAttribute('data-scale') || '1';
+      if (heroMainImg) {
+        if (full) heroMainImg.src = full;
+        heroMainImg.style.transform = 'translateX(2%) scale(' + scale + ')';
+      }
+      heroThumbs.forEach(function(t) { t.classList.remove('is-active'); });
+      thumb.classList.add('is-active');
+    }
+    heroThumbs.forEach(function(thumb) {
+      thumb.addEventListener('click', function() { applyHeroImage(thumb); });
+    });
+    // apply the initial zoom for the active thumb on load
+    const initialThumb = document.querySelector('.product-hero__thumb.is-active');
+    if (initialThumb) applyHeroImage(initialThumb);
   </script>
 
   <script src="../js/chatbot.js"></script>

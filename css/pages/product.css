@@ -140,6 +140,15 @@
   color: var(--color-text-muted);
 }
 
+/* Photo thumbnails — fit the product shot inside the small button */
+.product-hero__thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
 .product-hero__thumb:hover,
 .product-hero__thumb.is-active {
   border-color: var(--color-primary);
