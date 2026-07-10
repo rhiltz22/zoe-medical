@@ -149,293 +149,70 @@
           <!-- LEFT: specs + features -->
           <div class="product-body__main">
 
-            <!-- GENERAL SPECIFICATIONS -->
+            <!-- OVERVIEW
+                 Marketing content mirroring zoemedical.com/outpatient-surgery/.
+                 Detailed technical specs live in the product brochure (see sidebar).
+            -->
             <div class="spec-block card">
               <div class="spec-block__header">
-                <h2 class="spec-block__title">General specifications</h2>
+                <h2 class="spec-block__title">Overview</h2>
               </div>
+              <p style="padding: var(--space-sm) var(--space-md); margin: 0; font-size: var(--text-sm); color: var(--color-text-body); line-height: 1.6; border-bottom: 1px solid var(--color-border);">
+                The Nightingale PPM3 patient monitor meets the needs of outpatient
+                surgery clinics for reliable monitoring of physiological parameters in
+                a clean, compact design. A bright, high-contrast display with
+                straightforward layouts makes it quick to learn and easy to use.
+              </p>
               <div class="spec-row">
-                <span class="spec-row__key">Display</span>
-                <span class="spec-row__val">8.4" color "All-angle-view"</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Waveforms</span>
-                <span class="spec-row__val">5</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Size (H × W × D)</span>
-                <span class="spec-row__val">7.2" × 11.3" × 3.3"</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Weight</span>
-                <span class="spec-row__val">4.5 lbs</span>
+                <span class="spec-row__key">Parameters monitored</span>
+                <span class="spec-row__val">ECG, respiration, CO₂, SpO₂, NIBP, temperature</span>
               </div>
               <div class="spec-row spec-row--last">
-                <span class="spec-row__key">Stored trends</span>
-                <span class="spec-row__val">1 min / 24 hours</span>
+                <span class="spec-row__key">Heart rate</span>
+                <span class="spec-row__val">Derived from ECG, SpO₂, or NIBP</span>
               </div>
             </div>
 
-            <!-- ECG -->
-            <div class="spec-block card">
-              <div class="spec-block__header">
-                <h2 class="spec-block__title">ECG</h2>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Input</span>
-                <span class="spec-row__val">3 and 5 wires</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Displayable leads</span>
-                <span class="spec-row__val">I, II, III, aVR, aVL, aVF, V</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">HR range</span>
-                <span class="spec-row__val">15 to 300 bpm</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">HR accuracy</span>
-                <span class="spec-row__val">Greater of ±1% or ±2 bpm</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Pacer detection</span>
-                <span class="spec-row__val">Yes</span>
-              </div>
-              <div class="spec-row spec-row--last">
-                <span class="spec-row__key">Respiration rate</span>
-                <span class="spec-row__val">2–120 bpm (using Lead II)</span>
-              </div>
-            </div>
-
-            <!-- NIBP -->
-            <div class="spec-block card">
-              <div class="spec-block__header">
-                <h2 class="spec-block__title">NIBP</h2>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Parameters</span>
-                <span class="spec-row__val">Systolic, Diastolic, Mean</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Range</span>
-                <span class="spec-row__val">S: 30–260; D: 10–235; M: 20–255 mmHg</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">NIBP accuracy</span>
-                <span class="spec-row__val">Meets AAMI SP10 clinical accuracy requirements</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Auto modes</span>
-                <span class="spec-row__val">3, 5, 10, 15, 30, 60 min.</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Overpressure cutoff</span>
-                <span class="spec-row__val">290 ±3 mmHg (normal); 300 ±30 mmHg (back-up)</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">PR range</span>
-                <span class="spec-row__val">30 to 240 bpm</span>
-              </div>
-              <div class="spec-row spec-row--last">
-                <span class="spec-row__key">PR accuracy</span>
-                <span class="spec-row__val">Greater of ±5% or ±2 bpm</span>
-              </div>
-            </div>
-
-            <!-- PULSE OXIMETRY -->
-            <div class="spec-block card">
-              <div class="spec-block__header">
-                <h2 class="spec-block__title">Pulse oximetry (SpO₂)</h2>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Method</span>
-                <span class="spec-row__val">Dual Wave Absorption Spectrophotometry</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">SpO₂ range</span>
-                <span class="spec-row__val">30 to 100%</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">SpO₂ accuracy</span>
-                <span class="spec-row__val">±2% (from 70 to 100%)</span>
-              </div>
-              <div class="spec-row spec-row--last">
-                <span class="spec-row__key">PR range &amp; accuracy</span>
-                <span class="spec-row__val">30 to 240 bpm, ±3 bpm</span>
-              </div>
-            </div>
-
-            <!-- CO2 / CAPNOGRAPHY -->
-            <div class="spec-block card">
-              <div class="spec-block__header">
-                <h2 class="spec-block__title">CO₂ — Masimo Phasein® (option)</h2>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Method</span>
-                <span class="spec-row__val">Side-stream capnography (non-dispersive IR)</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Parameters</span>
-                <span class="spec-row__val">EtCO₂, IPI, FiCO₂, RR</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">CO₂ range</span>
-                <span class="spec-row__val">0 to 150 mmHg</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">CO₂ accuracy</span>
-                <span class="spec-row__val">0–38 mmHg: ±2 mmHg; &gt;38 mmHg: ±5%</span>
-              </div>
-              <div class="spec-row spec-row--last">
-                <span class="spec-row__key">RR range &amp; accuracy</span>
-                <span class="spec-row__val">0–150 rpm, ±1 rpm (0–70 rpm)</span>
-              </div>
-            </div>
-
-            <!-- TEMPERATURE -->
-            <div class="spec-block card">
-              <div class="spec-block__header">
-                <h2 class="spec-block__title">Temperature</h2>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Probe type</span>
-                <span class="spec-row__val">YSI 400-series thermistor</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Range</span>
-                <span class="spec-row__val">41.0–122.0°F (5.0–50.0°C)</span>
-              </div>
-              <div class="spec-row spec-row--last">
-                <span class="spec-row__key">Accuracy</span>
-                <span class="spec-row__val">±0.1°F or ±0.1°C (plus probe tolerance)</span>
-              </div>
-            </div>
-
-            <!-- ELECTRICAL -->
-            <div class="spec-block card">
-              <div class="spec-block__header">
-                <h2 class="spec-block__title">Electrical</h2>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Power</span>
-                <span class="spec-row__val">100–240 VAC, 50/60 Hz, 1.2 A max</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Battery</span>
-                <span class="spec-row__val">&gt;5 hour, Lithium Ion</span>
-              </div>
-              <div class="spec-row spec-row--last">
-                <span class="spec-row__key">Protection</span>
-                <span class="spec-row__val">Class I, Type CF (defibrillation proof), IPX1</span>
-              </div>
-            </div>
-
-            <!-- ENVIRONMENTAL -->
-            <div class="spec-block card">
-              <div class="spec-block__header">
-                <h2 class="spec-block__title">Environmental</h2>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Operating temp.</span>
-                <span class="spec-row__val">32–104°F (0–40°C)</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Operating humidity</span>
-                <span class="spec-row__val">15–90%, non-condensing</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Storage temp.</span>
-                <span class="spec-row__val">-4–140°F (-20–60°C)</span>
-              </div>
-              <div class="spec-row spec-row--last">
-                <span class="spec-row__key">Storage humidity</span>
-                <span class="spec-row__val">15–95%, non-condensing</span>
-              </div>
-            </div>
-
-            <!-- CONNECTIVITY -->
-            <div class="spec-block card">
-              <div class="spec-block__header">
-                <h2 class="spec-block__title">Connectivity</h2>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">EMR integration</span>
-                <span class="spec-row__val">Real-time connection to major oral surgery EMR systems</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">Network</span>
-                <span class="spec-row__val">Ethernet</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">USB</span>
-                <span class="spec-row__val">For software upgrade</span>
-              </div>
-              <div class="spec-row spec-row--last">
-                <span class="spec-row__key">Serial ports</span>
-                <span class="spec-row__val">2 RS232 ports; dual channel recorder</span>
-              </div>
-            </div>
-
-            <!-- STANDARDS -->
-            <div class="spec-block card">
-              <div class="spec-block__header">
-                <h2 class="spec-block__title">Standards conformance</h2>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">IEC 60601-1</span>
-                <span class="spec-row__val">Safety</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">IEC 60601-1-2</span>
-                <span class="spec-row__val">EMC</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">IEC 60601-1-8</span>
-                <span class="spec-row__val">Alarms</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">IEC 60601-2-27</span>
-                <span class="spec-row__val">ECG</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">ISO 80601-2-30</span>
-                <span class="spec-row__val">NIBP</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">EC 60601-2-34</span>
-                <span class="spec-row__val">IBP</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">ISO 80601-2-55</span>
-                <span class="spec-row__val">CO₂</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">ISO 80601-2-56</span>
-                <span class="spec-row__val">Temp</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-row__key">ISO 80601-2-61</span>
-                <span class="spec-row__val">SpO₂</span>
-              </div>
-              <div class="spec-row spec-row--last">
-                <span class="spec-row__key">IEC 62366</span>
-                <span class="spec-row__val">Usability</span>
-              </div>
-            </div>
-
-            <!-- KEY FEATURES -->
+            <!-- AFFORDABLE -->
             <div class="features-block card">
               <div class="features-block__header">
-                <h2 class="spec-block__title">Key features</h2>
+                <h2 class="spec-block__title">Affordable</h2>
               </div>
 
               <div class="feature-item">
                 <div class="feature-item__icon">
-                  <i class="ti ti-device-desktop" aria-hidden="true"></i>
+                  <i class="ti ti-cash" aria-hidden="true"></i>
                 </div>
                 <div class="feature-item__text">
-                  <h3 class="feature-item__title">8.4" all-angle-view display</h3>
-                  <p class="feature-item__desc">Wide-viewing-angle color display keeps waveforms and vitals readable from anywhere in the procedure room — without repositioning the monitor.</p>
+                  <h3 class="feature-item__title">Masimo ISA CO₂ analyzer with Nomoline adapter</h3>
+                  <p class="feature-item__desc">Reduces disposables expense with a no-water-trap sampling line — lower cost per procedure.</p>
+                </div>
+              </div>
+
+              <div class="feature-item feature-item--last">
+                <div class="feature-item__icon">
+                  <i class="ti ti-shield-check" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">Three-year comprehensive warranty</h3>
+                  <p class="feature-item__desc">Included as standard — parts and labor covered for three years.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- RELIABLE -->
+            <div class="features-block card">
+              <div class="features-block__header">
+                <h2 class="spec-block__title">Reliable</h2>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="ti ti-activity" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">Continuous, fast, and accurate monitoring</h3>
+                  <p class="feature-item__desc">Dependable real-time tracking of every physiological parameter throughout the procedure.</p>
                 </div>
               </div>
 
@@ -444,21 +221,77 @@
                   <i class="ti ti-transfer" aria-hidden="true"></i>
                 </div>
                 <div class="feature-item__text">
-                  <h3 class="feature-item__title">Real-time EMR connectivity</h3>
-                  <p class="feature-item__desc">Direct real-time connection to major oral surgery EMR systems. Patient data flows automatically into the record — no manual transcription.</p>
+                  <h3 class="feature-item__title">Major EMR compatibility</h3>
+                  <p class="feature-item__desc">Connects with major oral surgery electronic medical record systems.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="ti ti-refresh" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">Software upgradeable via USB</h3>
+                  <p class="feature-item__desc">Keep the monitor current and compatible with future updates.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="ti ti-battery-charging" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">Extended-life Lithium Ion battery</h3>
+                  <p class="feature-item__desc">Long-running power for uninterrupted monitoring between charges.</p>
                 </div>
               </div>
 
               <div class="feature-item feature-item--last">
                 <div class="feature-item__icon">
-                  <i class="ti ti-wave-sine" aria-hidden="true"></i>
+                  <i class="ti ti-building-factory" aria-hidden="true"></i>
                 </div>
                 <div class="feature-item__text">
-                  <h3 class="feature-item__title">Optional Masimo Phasein® capnography</h3>
-                  <p class="feature-item__desc">Side-stream CO₂ monitoring with EtCO₂, IPI, FiCO₂, and RR — essential for sedation monitoring in oral surgery environments.</p>
+                  <h3 class="feature-item__title">Manufactured and serviced in New England</h3>
+                  <p class="feature-item__desc">Designed, built, and supported in the USA by the team that stands behind it.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- USER-FRIENDLY -->
+            <div class="features-block card">
+              <div class="features-block__header">
+                <h2 class="spec-block__title">User-friendly</h2>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="ti ti-device-desktop" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">Large, bright display with wide viewing angle</h3>
+                  <p class="feature-item__desc">High-contrast visuals stay readable from anywhere in the procedure room.</p>
                 </div>
               </div>
 
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="ti ti-hand-click" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">Intuitive navigation and layout</h3>
+                  <p class="feature-item__desc">Straightforward menus designed for quick learning and everyday ease of use.</p>
+                </div>
+              </div>
+
+              <div class="feature-item feature-item--last">
+                <div class="feature-item__icon">
+                  <i class="ti ti-droplet-off" aria-hidden="true"></i>
+                </div>
+                <div class="feature-item__text">
+                  <h3 class="feature-item__title">No water trap, no calibration</h3>
+                  <p class="feature-item__desc">CO₂ monitoring requires no water trap and no routine calibration — less maintenance.</p>
+                </div>
+              </div>
             </div>
           </div>
 
