@@ -10,14 +10,19 @@
   // (zoemedical.com) must be onboarded first:
   //   npx wrangler email sending enable zoemedical.com
   //
-  // The optional "destination_address" restricts who this binding may
-  // email — we only ever send to customer support, so locking it down
-  // is good defense. Remove the line if you hit E_RECIPIENT_NOT_ALLOWED
-  // during setup and re-add once the address is confirmed.
+  // The optional "allowed_destination_addresses" restricts who this
+  // binding may email — we only send to customer support (sales/general)
+  // and service (repair requests), so locking it down is good defense.
+  // Each address must be a verified destination in Cloudflare Email
+  // Routing. Remove this line if you hit E_RECIPIENT_NOT_ALLOWED during
+  // setup and re-add once both addresses are confirmed.
   "send_email": [
     {
       "name": "EMAIL",
-      "destination_address": "customersupport@zoemedical.com"
+      "allowed_destination_addresses": [
+        "customersupport@zoemedical.com",
+        "service@zoemedical.com"
+      ]
     }
   ],
 

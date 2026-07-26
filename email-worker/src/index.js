@@ -2,9 +2,10 @@
   Zoe Medical — website form email Worker
   =======================================
   Receives POSTs from the website forms (homepage quote form, contact
-  form, and service/repair form) and emails each submission to
-  customersupport@zoemedical.com using the Cloudflare Email Sending
-  binding (env.EMAIL). No third-party form vendor involved.
+  form, and service/repair form) and emails each submission using the
+  Cloudflare Email Sending binding (env.EMAIL). Service / repair
+  requests go to service@zoemedical.com; everything else goes to
+  customersupport@zoemedical.com. No third-party form vendor involved.
 
   Forms post application/x-www-form-urlencoded (or multipart) — both
   are handled by request.formData().
@@ -27,7 +28,8 @@ const ALLOWED_ORIGINS = [
   "http://127.0.0.1:5500",
 ];
 
-const TO_ADDRESS   = "customersupport@zoemedical.com";
+const TO_ADDRESS      = "customersupport@zoemedical.com"; // sales / support / general
+const SERVICE_ADDRESS = "service@zoemedical.com";         // service & repair requests
 const FROM_ADDRESS = "website@zoemedical.com";   // MUST be on an onboarded sending domain
 const FROM_NAME    = "Zoe Medical Website";
 
@@ -102,7 +104,7 @@ export default {
     const { text, html } = buildBody(isService, name, fields);
 
     const payload = {
-      to: TO_ADDRESS,
+      to: isService ? SERVICE_ADDRESS : TO_ADDRESS,
       from: { email: FROM_ADDRESS, name: FROM_NAME },
       subject,
       text,
