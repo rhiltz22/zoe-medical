@@ -221,6 +221,9 @@
                       <option value="no">No — not needed</option>
                       <option value="yes">Yes — please include a loaner</option>
                     </select>
+                    <!-- Carries "No" to the Worker when the select is locked for a
+                         740 serial (a disabled select won't submit its own value). -->
+                    <input type="hidden" name="loaner" id="loaner-locked" value="no" disabled>
                     <span class="form-field__help">
                       Loaners are available for the Nightingale PPM3 only — $100 fee plus shipping &amp; handling.
                     </span>
@@ -407,6 +410,42 @@
         mobileNav.classList.remove('is-open');
       });
     });
+
+    // Loaners are only available for the Nightingale PPM3, whose serial
+    // numbers always start with "QFD". The loaner select stays locked to "No"
+    // and disabled unless a PPM3 (QFD) serial is entered.
+    const serialInput = document.getElementById('serial');
+    const loanerSelect = document.getElementById('loaner');
+    const loanerLocked = document.getElementById('loaner-locked');
+    const loanerHelp = loanerSelect
+      ? loanerSelect.parentElement.querySelector('.form-field__help')
+      : null;
+    const loanerHelpDefault = loanerHelp ? loanerHelp.textContent : '';
+
+    function syncLoanerAvailability() {
+      const serial = serialInput.value.trim().toUpperCase();
+      const isPPM3 = serial.startsWith('QFD');
+      if (isPPM3) {
+        loanerSelect.disabled = false;
+        if (loanerLocked) loanerLocked.disabled = true;
+        if (loanerHelp) {
+          loanerHelp.textContent = loanerHelpDefault;
+        }
+      } else {
+        loanerSelect.value = 'no';
+        loanerSelect.disabled = true;
+        if (loanerLocked) loanerLocked.disabled = false;
+        if (loanerHelp) {
+          loanerHelp.textContent =
+            'Loaners are available for the Nightingale PPM3 only (serial begins with QFD).';
+        }
+      }
+    }
+
+    if (serialInput && loanerSelect) {
+      serialInput.addEventListener('input', syncLoanerAvailability);
+      syncLoanerAvailability();
+    }
   </script>
 
   <script src="js/forms.js"></script>
